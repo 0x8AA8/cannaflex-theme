@@ -32,26 +32,33 @@ get_header();
     </div>
 </section>
 
-<!-- ===== 2. ABOUT (PDF: left media panel with centered badge overlay + right content) ===== -->
+<!-- ===== 2. ABOUT (PDF: left photo panel with centered badge overlay + right content) ===== -->
 <section class="home-about-split" aria-labelledby="home-about-heading">
     <div class="home-about-split__media">
-        <?php
-        $about_img = cannaflex_get('home_about_image');
-        if ($about_img) : ?>
-            <img src="<?php echo esc_url($about_img); ?>" alt="<?php esc_attr_e('Cannaflex', 'cannaflex'); ?>" loading="lazy" class="home-about-split__badge-img">
+        <?php $about_photo = cannaflex_get('home_about_photo'); ?>
+        <?php if ($about_photo) : ?>
+            <img src="<?php echo esc_url($about_photo); ?>" alt="" loading="lazy" class="home-about-split__photo">
         <?php else : ?>
-            <div class="home-about-split__badge-fallback">
-                <svg viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" width="200" height="200" aria-hidden="true">
+            <div class="placeholder-img home-about-split__photo"><?php esc_html_e('Background Photo', 'cannaflex'); ?></div>
+        <?php endif; ?>
+
+        <div class="home-about-split__badge">
+            <?php
+            $about_badge = cannaflex_get('home_about_image');
+            if ($about_badge) : ?>
+                <img src="<?php echo esc_url($about_badge); ?>" alt="<?php esc_attr_e('Made in Morocco', 'cannaflex'); ?>" loading="lazy" class="home-about-split__badge-img">
+            <?php else : ?>
+                <svg class="home-about-split__badge-svg" viewBox="0 0 150 150" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                     <circle cx="75" cy="75" r="70" fill="none" stroke="currentColor" stroke-width="2"/>
                     <circle cx="75" cy="75" r="60" fill="none" stroke="currentColor" stroke-width="1"/>
                     <text fill="currentColor" font-family="Inter,sans-serif" font-size="10" font-weight="700" text-anchor="middle">
-                        <textPath href="#home-badge-circle" startOffset="50%">MADE IN MOROCCO</textPath>
+                        <textPath href="#home-badge-c" startOffset="50%">MADE IN MOROCCO</textPath>
                     </text>
-                    <defs><path id="home-badge-circle" d="M 75,15 a 60,60 0 1,1 0,120 a 60,60 0 1,1 0,-120"/></defs>
+                    <defs><path id="home-badge-c" d="M 75,15 a 60,60 0 1,1 0,120 a 60,60 0 1,1 0,-120"/></defs>
                     <text x="75" y="82" fill="currentColor" font-family="Inter,sans-serif" font-size="22" font-weight="700" text-anchor="middle">&#x1F33F;</text>
                 </svg>
-            </div>
-        <?php endif; ?>
+            <?php endif; ?>
+        </div>
     </div>
     <div class="home-about-split__content">
         <h2 id="home-about-heading"><?php echo esc_html(cannaflex_get('home_about_heading', 'About Us')); ?></h2>

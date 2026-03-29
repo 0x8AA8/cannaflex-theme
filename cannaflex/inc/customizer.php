@@ -65,9 +65,15 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         ]);
     }
 
+    $wp_customize->add_setting('cannaflex_home_about_photo', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cannaflex_home_about_photo', [
+        'label'   => __('Background Photo', 'cannaflex'),
+        'section' => 'cannaflex_home_about',
+    ]));
+
     $wp_customize->add_setting('cannaflex_home_about_image', ['default' => '', 'sanitize_callback' => 'esc_url_raw']);
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'cannaflex_home_about_image', [
-        'label'   => __('Badge / Image', 'cannaflex'),
+        'label'   => __('Badge / Emblem Overlay', 'cannaflex'),
         'section' => 'cannaflex_home_about',
     ]));
 

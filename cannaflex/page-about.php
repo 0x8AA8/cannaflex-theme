@@ -164,12 +164,6 @@ $page_id = get_the_ID();
 </section>
 
 <!-- ===== CTA STRIP (PDF: left light bg + green heading, right image overlay + white text + button) ===== -->
-<?php
-$cta_bg = get_post_meta($page_id, '_cfx_about_cta_bg', true);
-if ($cta_bg) {
-    wp_add_inline_style('cannaflex-main', '.cta-strip__action{background-image:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url(' . esc_url($cta_bg) . ')}');
-}
-?>
 <section class="cta-strip" aria-labelledby="about-cta-heading">
     <div class="cta-strip__heading">
         <h2 id="about-cta-heading">

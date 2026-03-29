@@ -73,6 +73,25 @@ add_action('wp_enqueue_scripts', function () {
 });
 
 /* ==========================================================================
+   Dynamic CSS (About CTA background image)
+   ========================================================================== */
+add_action('wp_enqueue_scripts', function () {
+    if (! is_page_template('page-about.php')) {
+        return;
+    }
+    $page_id = get_queried_object_id();
+    if (! $page_id) {
+        return;
+    }
+    $cta_bg = get_post_meta($page_id, '_cfx_about_cta_bg', true);
+    if (! $cta_bg) {
+        return;
+    }
+    $css = '.cta-strip__action{background-image:linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.4)),url(' . esc_url_raw($cta_bg) . ');}';
+    wp_add_inline_style('cannaflex-main', $css);
+}, 20);
+
+/* ==========================================================================
    Widgets
    ========================================================================== */
 add_action('widgets_init', function () {

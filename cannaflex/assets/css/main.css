@@ -570,26 +570,40 @@ select.form-control {
 }
 
 .home-about-split__media {
+  position: relative;
   overflow: hidden;
   min-height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background: var(--color-accent);
 }
 
-.home-about-split__badge-img {
-  max-width: 320px;
-  width: 80%;
-  height: auto;
-  object-fit: contain;
+.home-about-split__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
-.home-about-split__badge-fallback {
-  color: var(--color-primary);
+.home-about-split__badge {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
+  pointer-events: none;
+}
+
+.home-about-split__badge-img {
+  max-width: 240px;
+  width: 50%;
+  height: auto;
+  object-fit: contain;
+  pointer-events: auto;
+}
+
+.home-about-split__badge-svg {
+  width: 200px;
+  height: 200px;
+  color: var(--color-primary);
 }
 
 .home-about-split__content {
@@ -634,7 +648,8 @@ select.form-control {
   overflow: hidden;
   min-height: 320px;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
+  background: var(--color-white);
 }
 
 .seed-flow__card-bg {
@@ -644,31 +659,28 @@ select.form-control {
   height: 100%;
   object-fit: cover;
   z-index: 0;
+  opacity: 0.08;
 }
 
 .seed-flow__card--intro::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,.6), transparent 65%);
-  z-index: 1;
+  content: none;
 }
 
 .seed-flow__card-inner {
   position: relative;
   z-index: 2;
   padding: 2.5rem;
-  color: var(--color-white);
+  color: var(--color-black);
 }
 
 .seed-flow__card-inner h2 {
-  color: var(--color-white);
+  color: var(--color-primary);
   margin-bottom: 0.75rem;
 }
 
 .seed-flow__card-inner p {
   font-size: var(--fs-small);
-  opacity: 0.9;
+  color: #444;
   margin-bottom: 1.25rem;
 }
 
