@@ -71,7 +71,7 @@ foreach ($blocks as $index => $block) :
             <?php if ($img_url) : ?>
                 <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($block['title']); ?>" loading="lazy" width="960" height="500">
             <?php else : ?>
-                <div class="placeholder-img" style="width:100%;height:100%;min-height:420px"><?php echo esc_html($block['title']); ?></div>
+                <div class="placeholder-img placeholder-img--full placeholder-img--tall"><?php echo esc_html($block['title']); ?></div>
             <?php endif; ?>
         </div>
         <div class="activity-block__content">
@@ -110,7 +110,7 @@ foreach ($blocks as $index => $block) :
                         <?php if ($logo) : ?>
                             <img src="<?php echo esc_url($logo); ?>" alt="<?php echo esc_attr($cert->post_title); ?>" loading="lazy" width="180" height="180">
                         <?php else : ?>
-                            <div class="placeholder-img" style="aspect-ratio:1;border-radius:12px"><?php echo esc_html($cert->post_title); ?></div>
+                            <div class="placeholder-img placeholder-img--square placeholder-img--rounded"><?php echo esc_html($cert->post_title); ?></div>
                         <?php endif; ?>
                         <h3><?php echo esc_html($cert->post_title); ?></h3>
                         <?php if ($desc) : ?>
@@ -130,7 +130,7 @@ foreach ($blocks as $index => $block) :
                 ];
                 foreach ($fallback_certs as $c) : ?>
                     <div class="cert-card">
-                        <div class="placeholder-img" style="aspect-ratio:1;border-radius:12px"><?php echo esc_html($c['name']); ?></div>
+                        <div class="placeholder-img placeholder-img--square placeholder-img--rounded"><?php echo esc_html($c['name']); ?></div>
                         <h3><?php echo esc_html($c['name']); ?></h3>
                         <?php if ($c['desc']) : ?>
                             <p><?php echo esc_html($c['desc']); ?></p>

@@ -32,52 +32,51 @@ get_header();
     </div>
 </section>
 
-<!-- ===== 2. ABOUT SPLIT ===== -->
-<section class="home-about section" aria-labelledby="home-about-heading">
-    <div class="container split">
-        <div class="home-about__badge">
-            <?php
-            $about_img = cannaflex_get('home_about_image');
-            if ($about_img) : ?>
-                <img src="<?php echo esc_url($about_img); ?>" alt="<?php esc_attr_e('Made in Morocco', 'cannaflex'); ?>" width="320" height="320" loading="lazy">
-            <?php else : ?>
-                <div class="placeholder-img placeholder-img--badge"><?php esc_html_e('Badge Image', 'cannaflex'); ?></div>
-            <?php endif; ?>
-        </div>
-        <div class="home-about__text">
-            <h2 id="home-about-heading"><?php echo esc_html(cannaflex_get('home_about_heading', 'About Us')); ?></h2>
-            <p class="home-about__intro"><?php echo esc_html(cannaflex_get('home_about_intro', "From the ancestral cradle of Moroccan cannabis to the global market \u{2014} we're the partner you can trust.")); ?></p>
-            <?php echo wp_kses_post(wpautop(esc_html(cannaflex_get('home_about_text', "At the heart of the Rif Mountains \u{2014} the ancestral cradle of Moroccan cannabis. This region's rich soil, unique microclimate, and deep cultural legacy have made it one of the world's most iconic cannabis-growing regions.\n\nWe honor that heritage by cultivating each plant with care and harvesting it with respect, using time-honored traditions passed down through generations of Moroccan farmers.\n\nMore than a producer, we're your global growth partner. Cannaflex's robust international network offers scalable, compliant cannabis solutions delivered to your market.")))); ?>
-            <a href="<?php echo esc_url(home_url('/about/')); ?>" class="btn btn--primary">
-                <?php echo esc_html(cannaflex_get('home_about_btn', 'Learn More')); ?>
-            </a>
-        </div>
+<!-- ===== 2. ABOUT SPLIT (PDF: large left media panel + right content) ===== -->
+<section class="home-about-split" aria-labelledby="home-about-heading">
+    <div class="home-about-split__media">
+        <?php
+        $about_img = cannaflex_get('home_about_image');
+        if ($about_img) : ?>
+            <img src="<?php echo esc_url($about_img); ?>" alt="<?php esc_attr_e('Cannaflex', 'cannaflex'); ?>" loading="lazy">
+        <?php else : ?>
+            <div class="placeholder-img placeholder-img--full"><?php esc_html_e('About Image', 'cannaflex'); ?></div>
+        <?php endif; ?>
+    </div>
+    <div class="home-about-split__content">
+        <h2 id="home-about-heading"><?php echo esc_html(cannaflex_get('home_about_heading', 'About Us')); ?></h2>
+        <p class="home-about-split__intro"><?php echo esc_html(cannaflex_get('home_about_intro', "From the ancestral cradle of Moroccan cannabis to the global market \u{2014} we're the partner you can trust.")); ?></p>
+        <?php echo wp_kses_post(wpautop(esc_html(cannaflex_get('home_about_text', "At the heart of the Rif Mountains \u{2014} the ancestral cradle of Moroccan cannabis. This region's rich soil, unique microclimate, and deep cultural legacy have made it one of the world's most iconic cannabis-growing regions.\n\nWe honor that heritage by cultivating each plant with care and harvesting it with respect, using time-honored traditions passed down through generations of Moroccan farmers.\n\nMore than a producer, we're your global growth partner. Cannaflex's robust international network offers scalable, compliant cannabis solutions delivered to your market.")))); ?>
+        <a href="<?php echo esc_url(home_url('/about/')); ?>" class="btn btn--primary">
+            <?php echo esc_html(cannaflex_get('home_about_btn', 'Learn More')); ?>
+        </a>
     </div>
 </section>
 
-<!-- ===== 3. SEED TO SHELF + PROCESS TILES ===== -->
-<section class="seed-to-shelf section" aria-labelledby="seed-heading">
-    <div class="container split">
-        <div class="seed-to-shelf__image">
-            <?php
-            $seed_img = cannaflex_get('seed_image');
-            if ($seed_img) : ?>
-                <img src="<?php echo esc_url($seed_img); ?>" alt="" loading="lazy">
-            <?php else : ?>
-                <div class="placeholder-img placeholder-img--full"><?php esc_html_e('Cultivation Image', 'cannaflex'); ?></div>
-            <?php endif; ?>
-            <div class="seed-to-shelf__overlay">
-                <h2 id="seed-heading"><?php echo esc_html(cannaflex_get('seed_heading', 'From Seed to Shelf')); ?></h2>
-                <p><?php echo esc_html(cannaflex_get('seed_text', 'We control every step of the cannabis value chain — from cultivation in the Rif Mountains to finished products ready for global markets. This guarantees consistency, traceability, and outstanding quality across our full range of cannabis products.')); ?></p>
-                <a href="<?php echo esc_url(home_url('/activity/')); ?>" class="btn btn--white"><?php esc_html_e('Learn More', 'cannaflex'); ?></a>
-            </div>
-        </div>
-        <div class="process-tiles">
+<!-- ===== 3. SEED-TO-SHELF MOSAIC (PDF: text card + 3 icon cards as composed grid) ===== -->
+<section class="seed-chain section" aria-labelledby="seed-heading">
+    <div class="container">
+        <div class="seed-chain__grid">
+            <!-- Left: text card with image background -->
+            <article class="seed-chain__text-card">
+                <?php
+                $seed_img = cannaflex_get('seed_image');
+                if ($seed_img) : ?>
+                    <img src="<?php echo esc_url($seed_img); ?>" alt="" loading="lazy" class="seed-chain__bg-img">
+                <?php endif; ?>
+                <div class="seed-chain__text-inner">
+                    <h2 id="seed-heading"><?php echo esc_html(cannaflex_get('seed_heading', 'From Seed to Shelf')); ?></h2>
+                    <p><?php echo esc_html(cannaflex_get('seed_text', 'We control every step of the cannabis value chain — from cultivation in the Rif Mountains to finished products ready for global markets. This guarantees consistency, traceability, and outstanding quality across our full range of cannabis products.')); ?></p>
+                    <a href="<?php echo esc_url(home_url('/activity/')); ?>" class="btn btn--primary"><?php esc_html_e('Learn More', 'cannaflex'); ?></a>
+                </div>
+            </article>
+
+            <!-- Right: process icon cards -->
             <?php
             $tiles = [
-                ['title' => 'Agriculture',                  'text' => 'We partner with agricultural cooperatives authorized by Morocco\'s National Cannabis Agency (ANRAC) to cultivate cannabis in full compliance with Moroccan regulations.', 'icon' => 'leaf'],
-                ['title' => 'Transformation',               'text' => 'We transform and process cannabis into high-quality products, ensuring all certifications and standards are met throughout the production chain.', 'icon' => 'cycle'],
-                ['title' => 'Commercialisation and Export',  'text' => 'We sell and distribute our products locally and internationally in strict compliance to current Moroccan regulations, ensuring quality and compliance across all markets.', 'icon' => 'globe'],
+                ['title' => 'Agriculture',                 'text' => 'We partner with agricultural cooperatives authorized by Morocco\'s National Cannabis Agency (ANRAC) to cultivate cannabis in full compliance with Moroccan regulations.', 'icon' => 'leaf'],
+                ['title' => 'Transformation',              'text' => 'We transform and process cannabis into high-quality products, ensuring all certifications and standards are met throughout the production chain.', 'icon' => 'cycle'],
+                ['title' => 'Commercialisation and Export', 'text' => 'We sell and distribute our products locally and internationally in strict compliance to current Moroccan regulations, ensuring quality and compliance across all markets.', 'icon' => 'globe'],
             ];
 
             $icons = [
@@ -91,13 +90,11 @@ get_header();
                 $text  = cannaflex_get("process_" . ($i + 1) . "_text", $tiles[$i]['text']);
                 $icon  = $tiles[$i]['icon'];
                 ?>
-                <div class="process-tile">
-                    <div class="process-tile__icon"><?php echo $icons[$icon]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG ?></div>
-                    <div>
-                        <h3><?php echo esc_html($title); ?></h3>
-                        <p><?php echo esc_html($text); ?></p>
-                    </div>
-                </div>
+                <article class="seed-chain__icon-card">
+                    <div class="seed-chain__icon"><?php echo $icons[$icon]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG ?></div>
+                    <h3><?php echo esc_html($title); ?></h3>
+                    <p><?php echo esc_html($text); ?></p>
+                </article>
             <?php endfor; ?>
         </div>
     </div>
@@ -203,53 +200,58 @@ get_header();
     </div>
 </section>
 
-<!-- ===== 6. RECENT NEWS TIMELINE ===== -->
+<!-- ===== 6. RECENT NEWS (fixed 2-col composed timeline) ===== -->
 <section class="news-timeline section" aria-labelledby="news-heading">
     <div class="container">
         <h2 id="news-heading"><?php esc_html_e('Recent News', 'cannaflex'); ?></h2>
-        <p class="section-subtitle"><?php esc_html_e('Stay connected to discover how we\'re driving change in the global cannabis space and beyond through all of time.', 'cannaflex'); ?></p>
+        <p class="section-subtitle news-timeline__sub"><?php esc_html_e('Stay connected to discover how we\'re driving change in the global cannabis space and beyond through all of time.', 'cannaflex'); ?></p>
 
-        <div class="timeline">
-            <div class="timeline__items">
-                <?php
-                $news = get_posts([
-                    'post_type'      => 'post',
-                    'posts_per_page' => 6,
-                    'category_name'  => 'news',
-                ]);
+        <div class="timeline-composed">
+            <?php
+            $news = get_posts([
+                'post_type'      => 'post',
+                'posts_per_page' => 6,
+                'category_name'  => 'news',
+            ]);
 
-                if ($news) :
-                    foreach ($news as $item) :
-                        $year      = get_the_date('Y', $item);
-                        $day_month = get_the_date('d F', $item);
-                        ?>
-                        <article class="timeline__item">
-                            <span class="timeline__year"><?php echo esc_html($year); ?></span>
-                            <span class="timeline__date"><?php echo esc_html($day_month); ?></span>
+            if ($news) :
+                foreach ($news as $idx => $item) :
+                    $year      = get_the_date('Y', $item);
+                    $day_month = get_the_date('d F', $item);
+                    $side      = ($idx % 2 === 0) ? 'left' : 'right';
+                    ?>
+                    <article class="timeline-composed__item timeline-composed__item--<?php echo esc_attr($side); ?>">
+                        <div class="timeline-composed__card">
+                            <span class="timeline-composed__year"><?php echo esc_html($year); ?></span>
+                            <span class="timeline-composed__date"><?php echo esc_html($day_month); ?></span>
                             <h3><?php echo esc_html($item->post_title); ?></h3>
                             <p><?php echo esc_html(wp_trim_words($item->post_content, 15)); ?></p>
                             <a href="<?php echo esc_url(get_permalink($item)); ?>"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
-                        </article>
-                    <?php endforeach;
-                else : ?>
-                    <article class="timeline__item">
-                        <span class="timeline__year">2025</span>
-                        <span class="timeline__date">04 April</span>
+                        </div>
+                    </article>
+                <?php endforeach;
+            else : ?>
+                <article class="timeline-composed__item timeline-composed__item--left">
+                    <div class="timeline-composed__card">
+                        <span class="timeline-composed__year">2025</span>
+                        <span class="timeline-composed__date">04 April</span>
                         <h3><?php esc_html_e('New CBD Skincare Line Launching Soon', 'cannaflex'); ?></h3>
                         <p><?php esc_html_e('Join us at the forefront as we bring the future of cannabis in Africa — together.', 'cannaflex'); ?></p>
                         <a href="#"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
-                    </article>
-                    <article class="timeline__item">
-                        <span class="timeline__year">2025</span>
-                        <span class="timeline__date">07 June</span>
+                    </div>
+                </article>
+                <article class="timeline-composed__item timeline-composed__item--right">
+                    <div class="timeline-composed__card">
+                        <span class="timeline-composed__year">2025</span>
+                        <span class="timeline-composed__date">07 June</span>
                         <h3><?php esc_html_e('Cannaflex at Africa CannaTech Expo 2025', 'cannaflex'); ?></h3>
                         <p><?php esc_html_e("Africa's premier cannabis technology event. Let's shape the future of cannabis in Africa — together.", 'cannaflex'); ?></p>
                         <a href="#"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
-                    </article>
-                <?php endif;
-                wp_reset_postdata();
-                ?>
-            </div>
+                    </div>
+                </article>
+            <?php endif;
+            wp_reset_postdata();
+            ?>
         </div>
     </div>
 </section>

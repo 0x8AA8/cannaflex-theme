@@ -18,6 +18,7 @@ add_action('add_meta_boxes', function () {
     add_meta_box('cfx_about_values', __('About — Values (JSON)', 'cannaflex'), 'cannaflex_mb_textarea', 'page', 'normal', 'high', ['field' => '_cfx_about_values']);
     add_meta_box('cfx_about_cta', __('About — CTA Heading', 'cannaflex'), 'cannaflex_mb_text', 'page', 'normal', 'default', ['field' => '_cfx_about_cta']);
     add_meta_box('cfx_about_cta_text', __('About — CTA Body Text', 'cannaflex'), 'cannaflex_mb_textarea', 'page', 'normal', 'default', ['field' => '_cfx_about_cta_text']);
+    add_meta_box('cfx_about_cta_bg', __('About — CTA Background Image URL', 'cannaflex'), 'cannaflex_mb_text', 'page', 'normal', 'default', ['field' => '_cfx_about_cta_bg']);
 
     // Activity page
     add_meta_box('cfx_activity_intro_heading', __('Activity — Intro Heading', 'cannaflex'), 'cannaflex_mb_text', 'page', 'normal', 'high', ['field' => '_cfx_activity_intro_heading']);
@@ -87,6 +88,7 @@ add_action('save_post', function (int $post_id): void {
         '_cfx_about_values',
         '_cfx_about_cta',
         '_cfx_about_cta_text',
+        '_cfx_about_cta_bg',
         '_cfx_activity_intro_heading',
         '_cfx_activity_intro',
         '_cfx_activity_blocks',

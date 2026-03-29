@@ -19,7 +19,7 @@ $page_id = get_the_ID();
         <?php if (has_post_thumbnail()) : ?>
             <?php the_post_thumbnail('hero', ['loading' => 'eager']); ?>
         <?php else : ?>
-            <div class="placeholder-img" style="width:100%;height:100%;min-height:400px"><?php esc_html_e('About Image', 'cannaflex'); ?></div>
+            <div class="placeholder-img placeholder-img--full placeholder-img--tall"><?php esc_html_e('About Image', 'cannaflex'); ?></div>
         <?php endif; ?>
     </div>
     <div class="about-intro__content">
@@ -73,7 +73,7 @@ $page_id = get_the_ID();
         <?php if (has_post_thumbnail()) : ?>
             <img src="<?php echo esc_url(get_the_post_thumbnail_url($page_id, 'hero')); ?>" alt="" loading="lazy">
         <?php else : ?>
-            <div class="placeholder-img" style="width:100%;height:100%;min-height:600px"><?php esc_html_e('Values Image', 'cannaflex'); ?></div>
+            <div class="placeholder-img placeholder-img--full placeholder-img--xtall"><?php esc_html_e('Values Image', 'cannaflex'); ?></div>
         <?php endif; ?>
     </div>
     <div class="our-values__content">
@@ -139,7 +139,7 @@ $page_id = get_the_ID();
                         <?php if ($photo) : ?>
                             <img class="team-card__photo" src="<?php echo esc_url($photo); ?>" alt="<?php echo esc_attr($member->post_title); ?>" loading="lazy" width="400" height="400">
                         <?php else : ?>
-                            <div class="placeholder-img team-card__photo" style="aspect-ratio:1"><?php echo esc_html($member->post_title); ?></div>
+                            <div class="placeholder-img team-card__photo placeholder-img--square"><?php echo esc_html($member->post_title); ?></div>
                         <?php endif; ?>
                         <h3><?php echo esc_html($member->post_title); ?></h3>
                         <?php if ($role) : ?>
@@ -151,7 +151,7 @@ $page_id = get_the_ID();
                 // Fallback — 3 placeholder cards matching PDF layout
                 for ($i = 0; $i < 3; $i++) : ?>
                     <div class="team-card">
-                        <div class="placeholder-img team-card__photo" style="aspect-ratio:1"><?php esc_html_e('Name', 'cannaflex'); ?></div>
+                        <div class="placeholder-img team-card__photo placeholder-img--square"><?php esc_html_e('Name', 'cannaflex'); ?></div>
                         <h3><?php esc_html_e('Name', 'cannaflex'); ?></h3>
                         <p><?php esc_html_e('Job Title', 'cannaflex'); ?></p>
                     </div>
@@ -163,8 +163,12 @@ $page_id = get_the_ID();
     </div>
 </section>
 
-<!-- ===== CTA STRIP (PDF: left green text heading, right image overlay with body + button) ===== -->
-<section class="cta-strip" aria-labelledby="about-cta-heading">
+<!-- ===== CTA STRIP (PDF: left light bg + green heading, right image overlay + white text + button) ===== -->
+<?php
+$cta_bg = get_post_meta($page_id, '_cfx_about_cta_bg', true);
+$cta_var = $cta_bg ? '--cta-bg:url(' . esc_url($cta_bg) . ')' : '';
+?>
+<section class="cta-strip" aria-labelledby="about-cta-heading" <?php echo $cta_var ? 'style="' . esc_attr($cta_var) . '"' : ''; ?>>
     <div class="cta-strip__heading">
         <h2 id="about-cta-heading">
             <?php
