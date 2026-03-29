@@ -29,20 +29,18 @@ $page_id = get_the_ID();
         <h1 id="about-intro-heading"><?php echo esc_html($intro_heading ?: 'Globally Established, Proudly Rooted in Morocco'); ?></h1>
 
         <?php
-        // Use WP editor content if available, otherwise default text from PDF
-        if (have_posts()) :
-            while (have_posts()) : the_post();
-                if (get_the_content()) :
-                    the_content();
-                else : ?>
-                    <p><?php esc_html_e('At Cannaflex, everything begins in the heart of the Rif Mountains — the ancestral cradle of Moroccan cannabis. This region\'s rich soil, unique microclimate, and deep cultural legacy have made it one of the world\'s most iconic cannabis-growing regions.', 'cannaflex'); ?></p>
-                    <p><?php esc_html_e('We honor that heritage by cultivating each plant with care and harvesting it with respect, using time-honored traditions passed down through generations of Moroccan farmers.', 'cannaflex'); ?></p>
-                    <p><?php esc_html_e('But our vision goes beyond tradition.', 'cannaflex'); ?></p>
-                    <p><?php esc_html_e('By combining artisanal expertise with modern innovation, we craft premium cannabinoid-based products designed to meet the highest international standards. From CBD oils and supplements to cosmetics, teas, and extracts, every product is developed for purity, effectiveness, and consistency.', 'cannaflex'); ?></p>
-                <?php endif;
-            endwhile;
-        endif;
+        // Template-controlled content from PDF — never use the_content() here
+        // to prevent Gutenberg / Organic Store block contamination.
+        $about_body = get_post_meta($page_id, '_cfx_about_body', true);
+        if ($about_body) {
+            echo wp_kses_post(wpautop($about_body));
+        } else {
         ?>
+            <p><?php esc_html_e('At Cannaflex, everything begins in the heart of the Rif Mountains — the ancestral cradle of Moroccan cannabis. This region\'s rich soil, unique microclimate, and deep cultural legacy have made it one of the world\'s most iconic cannabis-growing regions.', 'cannaflex'); ?></p>
+            <p><?php esc_html_e('We honor that heritage by cultivating each plant with care and harvesting it with respect, using time-honored traditions passed down through generations of Moroccan farmers.', 'cannaflex'); ?></p>
+            <p><?php esc_html_e('But our vision goes beyond tradition.', 'cannaflex'); ?></p>
+            <p><?php esc_html_e('By combining artisanal expertise with modern innovation, we craft premium cannabinoid-based products designed to meet the highest international standards. From CBD oils and supplements to cosmetics, teas, and extracts, every product is developed for purity, effectiveness, and consistency.', 'cannaflex'); ?></p>
+        <?php } ?>
     </div>
 </section>
 

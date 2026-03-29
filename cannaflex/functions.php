@@ -121,6 +121,7 @@ require_once CANNAFLEX_DIR . '/inc/custom-post-types.php';
 require_once CANNAFLEX_DIR . '/inc/customizer.php';
 require_once CANNAFLEX_DIR . '/inc/meta-boxes.php';
 require_once CANNAFLEX_DIR . '/inc/contact-handler.php';
+require_once CANNAFLEX_DIR . '/inc/provisioning.php';
 
 /* ==========================================================================
    Helpers
@@ -176,3 +177,20 @@ add_filter('body_class', function (array $classes): array {
     }
     return $classes;
 });
+
+/* ==========================================================================
+   Prevent Gutenberg block content from contaminating Cannaflex templates.
+   When a page uses one of our custom templates, suppress block rendering
+   so only template-driven meta/customizer content is shown.
+   ========================================================================== */
+add_filter('the_content', function (string $content): string {
+    if (is_admin() || wp_doing_ajax()) {
+        return $content;
+    }
+    $template = get_page_template_slug();
+    $suppressed = ['page-about.php', 'page-activity.php', 'page-contact.php'];
+    if (in_array($template, $suppressed, true)) {
+        return '';
+    }
+    return $content;
+}, 1);

@@ -2234,3 +2234,137 @@ button:focus:not(:focus-visible) {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   PDF Parity Fixes — Hide placeholder labels in production,
+   tighten spacing, ensure proper fallback visuals.
+   ========================================================================== */
+
+/*
+ * Placeholders: suppress the visible text label so they appear as
+ * clean colored blocks rather than showing "Hero Image" / "Contact Image".
+ * Still functional for admins via the data-attribute approach.
+ */
+.placeholder-img {
+  font-size: 0;        /* hide text */
+  color: transparent;
+  position: relative;
+}
+
+/* Restore label visibility only inside WP admin bar context (logged-in preview) */
+.admin-bar .placeholder-img {
+  font-size: var(--fs-small);
+  color: var(--color-primary);
+}
+
+/*
+ * Hero section: when the image side is a placeholder, constrain height
+ * so it doesn't create excessive whitespace.
+ */
+.hero-split__image .placeholder-img {
+  min-height: 400px;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+/*
+ * Home About: when no photo is loaded, give the media panel a gradient
+ * that matches the green brand feel instead of flat mint.
+ */
+.home-about-split__media .placeholder-img {
+  background: linear-gradient(180deg, var(--color-primary) 0%, #2a7d6a 100%);
+}
+
+/*
+ * Contact page: give the left image placeholder a natural gradient.
+ */
+.contact-page__image .placeholder-img {
+  background: linear-gradient(180deg, var(--color-primary) 0%, #2a7d6a 50%, var(--color-accent) 100%);
+}
+
+/*
+ * Activity page: give alternating block image placeholders a gradient.
+ */
+.activity-block__image .placeholder-img {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+}
+
+/*
+ * Map placeholder: style it like a disabled map.
+ */
+.placeholder-img--map {
+  background: #e8e8e8;
+  min-height: 250px;
+}
+
+.admin-bar .placeholder-img--map {
+  color: #999;
+  font-size: var(--fs-caption);
+}
+
+/*
+ * About page values image placeholder: taller gradient.
+ */
+.our-values__image .placeholder-img {
+  background: linear-gradient(180deg, var(--color-primary) 0%, #2a7d6a 60%, var(--color-accent) 100%);
+}
+
+/*
+ * Team cards: style placeholder photos as silhouettes.
+ */
+.team-card .placeholder-img {
+  background: linear-gradient(180deg, var(--color-accent) 0%, #b5cbc6 100%);
+}
+
+/*
+ * Seed-flow section: match PDF spacing.
+ * PDF shows this section with moderate vertical padding.
+ */
+.seed-flow {
+  padding-block: var(--section-pad-y);
+  background: var(--color-white);
+}
+
+/*
+ * Products section: ensure proper vertical rhythm.
+ */
+.products-section > .container > h2 {
+  margin-bottom: 0.5rem;
+}
+
+/*
+ * Brands strip: match PDF vertical padding.
+ */
+.brands-strip {
+  padding-block: clamp(2.5rem, 5vw, 5rem);
+}
+
+/*
+ * Recent News timeline: match PDF spacing.
+ */
+.news-timeline {
+  padding-block: var(--section-pad-y);
+}
+
+/*
+ * CTA strip on About page: ensure right side has a green fallback
+ * when no CTA background image is set.
+ */
+.cta-strip__action {
+  background-color: var(--color-primary);
+}
+
+/*
+ * Certifications section: improve card alignment.
+ */
+.cert-card {
+  padding: 1rem;
+}
+
+.cert-card .placeholder-img {
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  aspect-ratio: 1;
+  max-width: 180px;
+  margin-inline: auto;
+  margin-bottom: 0.75rem;
+}

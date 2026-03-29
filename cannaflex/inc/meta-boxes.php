@@ -14,6 +14,7 @@ add_action('add_meta_boxes', function () {
 
     // About page
     add_meta_box('cfx_about_intro_heading', __('About — Intro Heading', 'cannaflex'), 'cannaflex_mb_text', 'page', 'normal', 'high', ['field' => '_cfx_about_intro_heading']);
+    add_meta_box('cfx_about_body', __('About — Intro Body Text', 'cannaflex'), 'cannaflex_mb_textarea', 'page', 'normal', 'high', ['field' => '_cfx_about_body']);
     add_meta_box('cfx_about_mission', __('About — Mission', 'cannaflex'), 'cannaflex_mb_textarea', 'page', 'normal', 'high', ['field' => '_cfx_about_mission']);
     add_meta_box('cfx_about_values', __('About — Values (JSON)', 'cannaflex'), 'cannaflex_mb_textarea', 'page', 'normal', 'high', ['field' => '_cfx_about_values']);
     add_meta_box('cfx_about_cta', __('About — CTA Heading', 'cannaflex'), 'cannaflex_mb_text', 'page', 'normal', 'default', ['field' => '_cfx_about_cta']);
@@ -84,6 +85,7 @@ add_action('save_post', function (int $post_id): void {
 
     $fields = [
         '_cfx_about_intro_heading',
+        '_cfx_about_body',
         '_cfx_about_mission',
         '_cfx_about_values',
         '_cfx_about_cta',

@@ -21,10 +21,34 @@
             <?php endif; ?>
         </a>
 
-        <!-- Main navigation -->
+        <!-- Main navigation — always render canonical Cannaflex links (PDF nav bar) -->
         <nav class="main-nav" id="main-nav" aria-label="<?php esc_attr_e('Main navigation', 'cannaflex'); ?>">
             <?php
+            $cfx_nav = [
+                'Home'     => home_url('/'),
+                'About'    => home_url('/about/'),
+                'Activity' => home_url('/activity/'),
+                'Products' => home_url('/products/'),
+                'Brands'   => home_url('/brands/'),
+                'News'     => home_url('/news/'),
+                'Contact'  => home_url('/contact/'),
+            ];
+
+            // Use WP menu only if it contains the expected Cannaflex items
+            $cfx_use_wp_menu = false;
             if (has_nav_menu('primary')) {
+                $cfx_menu_items = wp_get_nav_menu_items(get_nav_menu_locations()['primary'] ?? 0);
+                if ($cfx_menu_items) {
+                    $cfx_menu_titles = array_map(function ($item) {
+                        return strtolower(trim($item->title));
+                    }, $cfx_menu_items);
+                    // Verify at least Home, About, Activity, Contact are present
+                    $cfx_required = ['home', 'about', 'activity', 'contact'];
+                    $cfx_use_wp_menu = ! array_diff($cfx_required, $cfx_menu_titles);
+                }
+            }
+
+            if ($cfx_use_wp_menu) {
                 wp_nav_menu([
                     'theme_location' => 'primary',
                     'container'      => false,
@@ -33,18 +57,9 @@
                     'fallback_cb'    => false,
                 ]);
             } else {
-                $nav_items = [
-                    'Home'     => home_url('/'),
-                    'About'    => home_url('/about/'),
-                    'Activity' => home_url('/activity/'),
-                    'Products' => home_url('/products/'),
-                    'Brands'   => home_url('/brands/'),
-                    'News'     => home_url('/news/'),
-                    'Contact'  => home_url('/contact/'),
-                ];
                 echo '<ul role="menubar">';
-                foreach ($nav_items as $label => $url) {
-                    $request = wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?: '';
+                foreach ($cfx_nav as $label => $url) {
+                    $request = wp_parse_url(sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'] ?? '')), PHP_URL_PATH) ?: '';
                     $target  = wp_parse_url($url, PHP_URL_PATH) ?: '';
                     $current = (untrailingslashit($request) === untrailingslashit($target))
                         ? ' aria-current="page"'
