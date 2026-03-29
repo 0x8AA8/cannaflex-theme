@@ -2,36 +2,38 @@
 /**
  * Template: Front Page (Home)
  *
+ * Matches: CANNAFLEX WEBSITE Home page.pdf
+ *
  * @package Cannaflex
  */
 
 get_header();
-
-$hero_img = cannaflex_get('hero_image');
 ?>
 
-<!-- ===== HERO ===== -->
-<section class="hero">
-    <div class="hero__bg">
-        <?php if ($hero_img) : ?>
-            <img src="<?php echo esc_url($hero_img); ?>" alt="" loading="eager" width="1920" height="1080">
-        <?php else : ?>
-            <div class="placeholder-img" style="width:100%;height:100%">Hero Image</div>
-        <?php endif; ?>
-    </div>
-    <div class="container">
-        <div class="hero__content">
-            <h1><?php echo esc_html(cannaflex_get('hero_heading', 'We are Leading the Change')); ?></h1>
+<!-- ===== 1. SPLIT HERO ===== -->
+<section class="hero-split" aria-labelledby="hero-heading">
+    <div class="hero-split__content">
+        <div class="hero-split__inner">
+            <h1 id="hero-heading"><?php echo esc_html(cannaflex_get('hero_heading', 'We are Leading the Change')); ?></h1>
             <?php echo wp_kses_post(wpautop(esc_html(cannaflex_get('hero_text', "We're redefining what cannabis can do. From Morocco's ancestral fields to international markets — we advance the legacy of Moroccan cannabis tradition, innovation, and craftsmanship to deliver premium, sustainable and high-quality cannabis products.\n\nJoin us in shaping the future of responsible, sustainable, and high-quality cannabis.")))); ?>
             <a href="<?php echo esc_url(cannaflex_get('hero_btn_url', '/contact')); ?>" class="btn btn--primary">
                 <?php echo esc_html(cannaflex_get('hero_btn_text', 'Join Us')); ?>
             </a>
         </div>
     </div>
+    <div class="hero-split__image">
+        <?php
+        $hero_img = cannaflex_get('hero_image');
+        if ($hero_img) : ?>
+            <img src="<?php echo esc_url($hero_img); ?>" alt="" loading="eager" fetchpriority="high">
+        <?php else : ?>
+            <div class="placeholder-img placeholder-img--full"><?php esc_html_e('Hero Image', 'cannaflex'); ?></div>
+        <?php endif; ?>
+    </div>
 </section>
 
-<!-- ===== ABOUT ===== -->
-<section class="home-about section">
+<!-- ===== 2. ABOUT SPLIT ===== -->
+<section class="home-about section" aria-labelledby="home-about-heading">
     <div class="container split">
         <div class="home-about__badge">
             <?php
@@ -39,11 +41,11 @@ $hero_img = cannaflex_get('hero_image');
             if ($about_img) : ?>
                 <img src="<?php echo esc_url($about_img); ?>" alt="<?php esc_attr_e('Made in Morocco', 'cannaflex'); ?>" width="320" height="320" loading="lazy">
             <?php else : ?>
-                <div class="placeholder-img" style="width:320px;height:320px;border-radius:50%">Badge Image</div>
+                <div class="placeholder-img placeholder-img--badge"><?php esc_html_e('Badge Image', 'cannaflex'); ?></div>
             <?php endif; ?>
         </div>
         <div class="home-about__text">
-            <h2><?php echo esc_html(cannaflex_get('home_about_heading', 'About Us')); ?></h2>
+            <h2 id="home-about-heading"><?php echo esc_html(cannaflex_get('home_about_heading', 'About Us')); ?></h2>
             <p class="home-about__intro"><?php echo esc_html(cannaflex_get('home_about_intro', "From the ancestral cradle of Moroccan cannabis to the global market \u{2014} we're the partner you can trust.")); ?></p>
             <?php echo wp_kses_post(wpautop(esc_html(cannaflex_get('home_about_text', "At the heart of the Rif Mountains \u{2014} the ancestral cradle of Moroccan cannabis. This region's rich soil, unique microclimate, and deep cultural legacy have made it one of the world's most iconic cannabis-growing regions.\n\nWe honor that heritage by cultivating each plant with care and harvesting it with respect, using time-honored traditions passed down through generations of Moroccan farmers.\n\nMore than a producer, we're your global growth partner. Cannaflex's robust international network offers scalable, compliant cannabis solutions delivered to your market.")))); ?>
             <a href="<?php echo esc_url(home_url('/about/')); ?>" class="btn btn--primary">
@@ -53,19 +55,19 @@ $hero_img = cannaflex_get('hero_image');
     </div>
 </section>
 
-<!-- ===== SEED TO SHELF ===== -->
-<section class="seed-to-shelf section">
+<!-- ===== 3. SEED TO SHELF + PROCESS TILES ===== -->
+<section class="seed-to-shelf section" aria-labelledby="seed-heading">
     <div class="container split">
         <div class="seed-to-shelf__image">
             <?php
             $seed_img = cannaflex_get('seed_image');
             if ($seed_img) : ?>
-                <img src="<?php echo esc_url($seed_img); ?>" alt="" loading="lazy" width="700" height="500">
+                <img src="<?php echo esc_url($seed_img); ?>" alt="" loading="lazy">
             <?php else : ?>
-                <div class="placeholder-img" style="width:100%;height:100%;min-height:400px">Cultivation Image</div>
+                <div class="placeholder-img placeholder-img--full"><?php esc_html_e('Cultivation Image', 'cannaflex'); ?></div>
             <?php endif; ?>
             <div class="seed-to-shelf__overlay">
-                <h2><?php echo esc_html(cannaflex_get('seed_heading', 'From Seed to Shelf')); ?></h2>
+                <h2 id="seed-heading"><?php echo esc_html(cannaflex_get('seed_heading', 'From Seed to Shelf')); ?></h2>
                 <p><?php echo esc_html(cannaflex_get('seed_text', 'We control every step of the cannabis value chain — from cultivation in the Rif Mountains to finished products ready for global markets. This guarantees consistency, traceability, and outstanding quality across our full range of cannabis products.')); ?></p>
                 <a href="<?php echo esc_url(home_url('/activity/')); ?>" class="btn btn--white"><?php esc_html_e('Learn More', 'cannaflex'); ?></a>
             </div>
@@ -90,7 +92,7 @@ $hero_img = cannaflex_get('hero_image');
                 $icon  = $tiles[$i]['icon'];
                 ?>
                 <div class="process-tile">
-                    <div class="process-tile__icon"><?php echo $icons[$icon]; // phpcs:ignore ?></div>
+                    <div class="process-tile__icon"><?php echo $icons[$icon]; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- static SVG ?></div>
                     <div>
                         <h3><?php echo esc_html($title); ?></h3>
                         <p><?php echo esc_html($text); ?></p>
@@ -101,10 +103,10 @@ $hero_img = cannaflex_get('hero_image');
     </div>
 </section>
 
-<!-- ===== OUR PRODUCTS ===== -->
-<section class="products-section section">
+<!-- ===== 4. OUR PRODUCTS (slider with visible card labels) ===== -->
+<section class="products-section section" aria-labelledby="products-heading">
     <div class="container">
-        <h2><?php echo esc_html(cannaflex_get('products_heading', 'Our Products')); ?></h2>
+        <h2 id="products-heading"><?php echo esc_html(cannaflex_get('products_heading', 'Our Products')); ?></h2>
         <p class="section-subtitle"><?php echo esc_html(cannaflex_get('products_text', 'We offer a comprehensive range of premium cannabis products, from dermatological to medical that not only meet manufacturing standards, but also comply with local and international regulations. Each product embodies the legacy of Moroccan craftsmanship — a refined blend of traditional know-how that reflects our unwavering commitment to authenticity, quality, and the healing power of Moroccan cannabis.')); ?></p>
 
         <div class="products-slider" aria-label="<?php esc_attr_e('Product categories', 'cannaflex'); ?>">
@@ -122,26 +124,30 @@ $hero_img = cannaflex_get('hero_image');
                         $thumb = get_the_post_thumbnail_url($prod, 'card');
                         ?>
                         <article class="product-card">
-                            <?php if ($thumb) : ?>
-                                <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($prod->post_title); ?>" loading="lazy" width="300" height="400">
-                            <?php else : ?>
-                                <div class="placeholder-img" style="width:100%;height:100%"><?php echo esc_html($prod->post_title); ?></div>
-                            <?php endif; ?>
-                            <div class="product-card__overlay">
+                            <div class="product-card__image">
+                                <?php if ($thumb) : ?>
+                                    <img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($prod->post_title); ?>" loading="lazy">
+                                <?php else : ?>
+                                    <div class="placeholder-img placeholder-img--full"><?php echo esc_html($prod->post_title); ?></div>
+                                <?php endif; ?>
+                            </div>
+                            <div class="product-card__label">
                                 <h3><?php echo esc_html($prod->post_title); ?></h3>
+                                <p><?php echo esc_html(wp_trim_words($prod->post_excerpt ?: $prod->post_content, 12)); ?></p>
                                 <a href="<?php echo esc_url(get_permalink($prod)); ?>"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
                             </div>
                         </article>
                     <?php endforeach;
                 else :
-                    // Fallback placeholder cards
                     $fallback = ['Cosmetics', 'Supplements', 'Edibles', 'Extracts', 'Vapes', 'Pet Care'];
                     foreach ($fallback as $name) : ?>
                         <article class="product-card">
-                            <div class="placeholder-img" style="width:100%;height:100%"><?php echo esc_html($name); ?></div>
-                            <div class="product-card__overlay">
+                            <div class="product-card__image">
+                                <div class="placeholder-img placeholder-img--full"><?php echo esc_html($name); ?></div>
+                            </div>
+                            <div class="product-card__label">
                                 <h3><?php echo esc_html($name); ?></h3>
-                                <a href="#"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
+                                <a href="<?php echo esc_url(home_url('/products/')); ?>"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
                             </div>
                         </article>
                     <?php endforeach;
@@ -163,10 +169,10 @@ $hero_img = cannaflex_get('hero_image');
     </div>
 </section>
 
-<!-- ===== BRANDS STRIP ===== -->
-<section class="brands-strip section">
+<!-- ===== 5. BRANDS STRIP ===== -->
+<section class="brands-strip section" aria-labelledby="brands-heading">
     <div class="container">
-        <h2><?php echo esc_html(cannaflex_get('brands_heading', 'Discover our Brands')); ?></h2>
+        <h2 id="brands-heading"><?php echo esc_html(cannaflex_get('brands_heading', 'Discover our Brands')); ?></h2>
         <p><?php echo esc_html(cannaflex_get('brands_text', 'Explore our distinct brands, each with its own identity, unified by the values at the heart of our company.')); ?></p>
 
         <div class="brands-grid">
@@ -188,7 +194,7 @@ $hero_img = cannaflex_get('hero_image');
             else :
                 $fallback_brands = ['VAPOCAN', 'FITOBOTANIKA', 'RifGold'];
                 foreach ($fallback_brands as $b) : ?>
-                    <span style="font-size:1.25rem;font-weight:700;letter-spacing:0.1em;opacity:0.85"><?php echo esc_html($b); ?></span>
+                    <span class="brands-grid__placeholder"><?php echo esc_html($b); ?></span>
                 <?php endforeach;
             endif;
             wp_reset_postdata();
@@ -197,10 +203,11 @@ $hero_img = cannaflex_get('hero_image');
     </div>
 </section>
 
-<!-- ===== RECENT NEWS TIMELINE ===== -->
-<section class="news-timeline section">
+<!-- ===== 6. RECENT NEWS TIMELINE ===== -->
+<section class="news-timeline section" aria-labelledby="news-heading">
     <div class="container">
-        <h2><?php esc_html_e('Recent News', 'cannaflex'); ?></h2>
+        <h2 id="news-heading"><?php esc_html_e('Recent News', 'cannaflex'); ?></h2>
+        <p class="section-subtitle"><?php esc_html_e('Stay connected to discover how we\'re driving change in the global cannabis space and beyond through all of time.', 'cannaflex'); ?></p>
 
         <div class="timeline">
             <div class="timeline__items">
@@ -213,8 +220,7 @@ $hero_img = cannaflex_get('hero_image');
 
                 if ($news) :
                     foreach ($news as $item) :
-                        $date = get_the_date('', $item);
-                        $year = get_the_date('Y', $item);
+                        $year      = get_the_date('Y', $item);
                         $day_month = get_the_date('d F', $item);
                         ?>
                         <article class="timeline__item">
@@ -248,10 +254,10 @@ $hero_img = cannaflex_get('hero_image');
     </div>
 </section>
 
-<!-- ===== RECENT POSTS ===== -->
-<section class="recent-posts section">
+<!-- ===== 7. RECENT POSTS ===== -->
+<section class="recent-posts section" aria-labelledby="posts-heading">
     <div class="container">
-        <h2><?php esc_html_e('Recent Posts', 'cannaflex'); ?></h2>
+        <h2 id="posts-heading"><?php esc_html_e('Recent Posts', 'cannaflex'); ?></h2>
 
         <div class="recent-posts__grid">
             <div class="recent-posts__list">
@@ -270,7 +276,7 @@ $hero_img = cannaflex_get('hero_image');
                                 <?php if ($thumb) : ?>
                                     <img src="<?php echo esc_url($thumb); ?>" alt="" loading="lazy" width="100" height="80">
                                 <?php else : ?>
-                                    <div class="placeholder-img" style="width:100px;height:80px"></div>
+                                    <div class="placeholder-img placeholder-img--thumb"></div>
                                 <?php endif; ?>
                             </div>
                             <div>
@@ -282,18 +288,18 @@ $hero_img = cannaflex_get('hero_image');
                     <?php endforeach;
                 else : ?>
                     <article class="post-card">
-                        <div class="post-card__thumb"><div class="placeholder-img" style="width:100px;height:80px"></div></div>
+                        <div class="post-card__thumb"><div class="placeholder-img placeholder-img--thumb"></div></div>
                         <div>
-                            <h3>Cannaflex Expands Distribution Across Europe</h3>
-                            <p>New partnerships bring premium Moroccan cannabis products to more markets.</p>
+                            <h3><?php esc_html_e('Cannaflex Expands Distribution Across Europe', 'cannaflex'); ?></h3>
+                            <p><?php esc_html_e('New partnerships bring premium Moroccan cannabis products to more markets.', 'cannaflex'); ?></p>
                             <a href="#"><?php esc_html_e('Read All', 'cannaflex'); ?></a>
                         </div>
                     </article>
                     <article class="post-card">
-                        <div class="post-card__thumb"><div class="placeholder-img" style="width:100px;height:80px"></div></div>
+                        <div class="post-card__thumb"><div class="placeholder-img placeholder-img--thumb"></div></div>
                         <div>
-                            <h3>Sustainability Update: Zero-Waste Farming Pilot in the Rif</h3>
-                            <p>Our pilot program recycles 100% of plant waste into organic compost.</p>
+                            <h3><?php esc_html_e('Sustainability Update: Zero-Waste Farming Pilot in the Rif', 'cannaflex'); ?></h3>
+                            <p><?php esc_html_e('Our pilot program recycles 100% of plant waste into organic compost.', 'cannaflex'); ?></p>
                             <a href="#"><?php esc_html_e('Read All', 'cannaflex'); ?></a>
                         </div>
                     </article>
@@ -305,23 +311,23 @@ $hero_img = cannaflex_get('hero_image');
             <div class="recent-posts__featured">
                 <?php
                 if ($posts && get_the_post_thumbnail_url($posts[0], 'hero')) : ?>
-                    <img src="<?php echo esc_url(get_the_post_thumbnail_url($posts[0], 'hero')); ?>" alt="" loading="lazy" width="600" height="400">
+                    <img src="<?php echo esc_url(get_the_post_thumbnail_url($posts[0], 'hero')); ?>" alt="" loading="lazy">
                 <?php else : ?>
-                    <div class="placeholder-img" style="width:100%;height:100%;min-height:300px">Featured Image</div>
+                    <div class="placeholder-img placeholder-img--featured"><?php esc_html_e('Featured Image', 'cannaflex'); ?></div>
                 <?php endif; ?>
             </div>
         </div>
     </div>
 </section>
 
-<!-- ===== CONTACT SPLIT ===== -->
-<section class="home-contact">
+<!-- ===== 8. CONTACT SPLIT ===== -->
+<section class="home-contact" aria-labelledby="home-contact-heading">
     <div class="home-contact__info">
         <?php
         $contact_bg = cannaflex_get('home_contact_image');
         if ($contact_bg) : ?>
             <div class="home-contact__info-bg">
-                <img src="<?php echo esc_url($contact_bg); ?>" alt="" loading="lazy" width="960" height="600">
+                <img src="<?php echo esc_url($contact_bg); ?>" alt="" loading="lazy">
             </div>
         <?php endif; ?>
         <div class="home-contact__info-text">
@@ -330,7 +336,7 @@ $hero_img = cannaflex_get('hero_image');
     </div>
 
     <div class="home-contact__form">
-        <h2><?php esc_html_e("Let's Connect", 'cannaflex'); ?></h2>
+        <h2 id="home-contact-heading"><?php esc_html_e("Let's Connect", 'cannaflex'); ?></h2>
         <?php get_template_part('template-parts/contact', 'form'); ?>
     </div>
 </section>

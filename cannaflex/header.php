@@ -17,37 +17,46 @@
             <?php if (has_custom_logo()) : ?>
                 <?php the_custom_logo(); ?>
             <?php else : ?>
-                <span style="font-weight:700;font-size:1.5rem;color:var(--color-primary)"><?php bloginfo('name'); ?></span>
+                <span class="site-logo__text"><?php bloginfo('name'); ?></span>
             <?php endif; ?>
         </a>
 
         <!-- Main navigation -->
         <nav class="main-nav" id="main-nav" aria-label="<?php esc_attr_e('Main navigation', 'cannaflex'); ?>">
             <?php
-            $nav_items = [
-                'Home'     => home_url('/'),
-                'About'    => home_url('/about/'),
-                'Activity' => home_url('/activity/'),
-                'Products' => home_url('/products/'),
-                'Brands'   => home_url('/brands/'),
-                'News'     => home_url('/news/'),
-                'Contact'  => home_url('/contact/'),
-            ];
-
             if (has_nav_menu('primary')) {
                 wp_nav_menu([
                     'theme_location' => 'primary',
                     'container'      => false,
-                    'items_wrap'     => '%3$s',
+                    'items_wrap'     => '<ul role="menubar">%3$s</ul>',
                     'depth'          => 1,
+                    'fallback_cb'    => false,
                 ]);
             } else {
+                $nav_items = [
+                    'Home'     => home_url('/'),
+                    'About'    => home_url('/about/'),
+                    'Activity' => home_url('/activity/'),
+                    'Products' => home_url('/products/'),
+                    'Brands'   => home_url('/brands/'),
+                    'News'     => home_url('/news/'),
+                    'Contact'  => home_url('/contact/'),
+                ];
+                echo '<ul role="menubar">';
                 foreach ($nav_items as $label => $url) {
-                    $current = (untrailingslashit(wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?: '') === untrailingslashit(wp_parse_url($url, PHP_URL_PATH) ?: ''))
+                    $request = wp_parse_url($_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH) ?: '';
+                    $target  = wp_parse_url($url, PHP_URL_PATH) ?: '';
+                    $current = (untrailingslashit($request) === untrailingslashit($target))
                         ? ' aria-current="page"'
                         : '';
-                    printf('<a href="%s"%s>%s</a>', esc_url($url), $current, esc_html($label));
+                    printf(
+                        '<li role="none"><a href="%s" role="menuitem"%s>%s</a></li>',
+                        esc_url($url),
+                        $current,
+                        esc_html($label)
+                    );
                 }
+                echo '</ul>';
             }
             ?>
         </nav>
@@ -57,7 +66,19 @@
             <button type="button" id="search-toggle" aria-label="<?php esc_attr_e('Open search', 'cannaflex'); ?>">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             </button>
-            <span class="lang-indicator" aria-label="<?php esc_attr_e('Language', 'cannaflex'); ?>">EN</span>
+            <span class="lang-indicator" aria-label="<?php esc_attr_e('Language: English', 'cannaflex'); ?>">
+                <svg class="lang-flag" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <clipPath id="flag-circle"><circle cx="12" cy="12" r="11"/></clipPath>
+                    <g clip-path="url(#flag-circle)">
+                        <rect width="24" height="24" fill="#012169"/>
+                        <path d="M0 0L24 24M24 0L0 24" stroke="#fff" stroke-width="4"/>
+                        <path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="2"/>
+                        <path d="M12 0v24M0 12h24" stroke="#fff" stroke-width="6"/>
+                        <path d="M12 0v24M0 12h24" stroke="#C8102E" stroke-width="3.6"/>
+                    </g>
+                    <circle cx="12" cy="12" r="11" fill="none" stroke="#ddd" stroke-width="0.5"/>
+                </svg>
+            </span>
             <button type="button" class="nav-toggle" id="nav-toggle" aria-label="<?php esc_attr_e('Toggle menu', 'cannaflex'); ?>" aria-expanded="false" aria-controls="main-nav">
                 <span></span><span></span><span></span>
             </button>

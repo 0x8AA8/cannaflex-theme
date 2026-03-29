@@ -163,9 +163,9 @@ $page_id = get_the_ID();
     </div>
 </section>
 
-<!-- ===== CTA STRIP ===== -->
+<!-- ===== CTA STRIP (PDF: left green text heading, right image overlay with body + button) ===== -->
 <section class="cta-strip" aria-labelledby="about-cta-heading">
-    <div class="cta-strip__left">
+    <div class="cta-strip__heading">
         <h2 id="about-cta-heading">
             <?php
             $cta = get_post_meta($page_id, '_cfx_about_cta', true);
@@ -173,8 +173,8 @@ $page_id = get_the_ID();
             ?>
         </h2>
     </div>
-    <div class="cta-strip__right">
-        <div>
+    <div class="cta-strip__action">
+        <div class="cta-strip__action-inner">
             <?php
             $cta_text = get_post_meta($page_id, '_cfx_about_cta_text', true);
             ?>
