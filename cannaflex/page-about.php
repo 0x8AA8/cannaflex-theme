@@ -3,6 +3,8 @@
  * Template Name: About
  * Template Post Type: page
  *
+ * Matches: CANNAFLEX WEBSITE About page.pdf
+ *
  * @package Cannaflex
  */
 
@@ -11,21 +13,33 @@ get_header();
 $page_id = get_the_ID();
 ?>
 
-<!-- ===== INTRO ===== -->
-<section class="about-intro">
+<!-- ===== INTRO SPLIT ===== -->
+<section class="about-intro" aria-labelledby="about-intro-heading">
     <div class="about-intro__image">
         <?php if (has_post_thumbnail()) : ?>
             <?php the_post_thumbnail('hero', ['loading' => 'eager']); ?>
         <?php else : ?>
-            <div class="placeholder-img" style="width:100%;height:100%;min-height:400px">About Image</div>
+            <div class="placeholder-img" style="width:100%;height:100%;min-height:400px"><?php esc_html_e('About Image', 'cannaflex'); ?></div>
         <?php endif; ?>
     </div>
     <div class="about-intro__content">
-        <h1><?php the_title(); ?></h1>
         <?php
+        $intro_heading = get_post_meta($page_id, '_cfx_about_intro_heading', true);
+        ?>
+        <h1 id="about-intro-heading"><?php echo esc_html($intro_heading ?: 'Globally Established, Proudly Rooted in Morocco'); ?></h1>
+
+        <?php
+        // Use WP editor content if available, otherwise default text from PDF
         if (have_posts()) :
             while (have_posts()) : the_post();
-                the_content();
+                if (get_the_content()) :
+                    the_content();
+                else : ?>
+                    <p><?php esc_html_e('At Cannaflex, everything begins in the heart of the Rif Mountains — the ancestral cradle of Moroccan cannabis. This region\'s rich soil, unique microclimate, and deep cultural legacy have made it one of the world\'s most iconic cannabis-growing regions.', 'cannaflex'); ?></p>
+                    <p><?php esc_html_e('We honor that heritage by cultivating each plant with care and harvesting it with respect, using time-honored traditions passed down through generations of Moroccan farmers.', 'cannaflex'); ?></p>
+                    <p><?php esc_html_e('But our vision goes beyond tradition.', 'cannaflex'); ?></p>
+                    <p><?php esc_html_e('By combining artisanal expertise with modern innovation, we craft premium cannabinoid-based products designed to meet the highest international standards. From CBD oils and supplements to cosmetics, teas, and extracts, every product is developed for purity, effectiveness, and consistency.', 'cannaflex'); ?></p>
+                <?php endif;
             endwhile;
         endif;
         ?>
@@ -33,58 +47,68 @@ $page_id = get_the_ID();
 </section>
 
 <!-- ===== OUR MISSION ===== -->
-<section class="our-mission section">
+<section class="our-mission section" aria-labelledby="mission-heading">
     <div class="container">
         <div class="split">
             <div>
-                <h2><?php esc_html_e('Our Mission', 'cannaflex'); ?></h2>
+                <h2 id="mission-heading"><?php esc_html_e('Our Mission', 'cannaflex'); ?></h2>
             </div>
             <div>
                 <?php
                 $mission = get_post_meta($page_id, '_cfx_about_mission', true);
                 if ($mission) {
                     echo wp_kses_post(wpautop($mission));
-                } else {
-                    echo '<p>' . esc_html__('To lead the Moroccan cannabis industry into a new era of legality, sustainability, and global impact — delivering world-class products rooted in heritage and driven by science.', 'cannaflex') . '</p>';
-                    echo '<p>' . esc_html__('We believe in empowering local communities, preserving traditional knowledge, and meeting the highest international standards of quality and compliance.', 'cannaflex') . '</p>';
-                }
-                ?>
+                } else { ?>
+                    <p><?php esc_html_e('To elevate global well-being through premium, Moroccan-grown cannabis products — crafted with care, driven by innovation, and rooted in tradition.', 'cannaflex'); ?></p>
+                    <p><?php esc_html_e('We empower brands and partners around the world by providing high-quality, compliant, and customizable cannabinoid solutions, while promoting sustainability, social impact, and responsible cannabis use.', 'cannaflex'); ?></p>
+                <?php } ?>
             </div>
         </div>
     </div>
 </section>
 
 <!-- ===== OUR VALUES ===== -->
-<section class="our-values">
+<section class="our-values" aria-labelledby="values-heading">
     <div class="our-values__image">
-        <?php
-        $values_img = get_post_meta($page_id, '_cfx_values_image', true);
-        if ($values_img) : ?>
-            <img src="<?php echo esc_url($values_img); ?>" alt="" loading="lazy" width="500" height="800">
+        <?php if (has_post_thumbnail()) : ?>
+            <img src="<?php echo esc_url(get_the_post_thumbnail_url($page_id, 'hero')); ?>" alt="" loading="lazy">
         <?php else : ?>
-            <div class="placeholder-img" style="width:100%;height:100%;min-height:600px">Values Image</div>
+            <div class="placeholder-img" style="width:100%;height:100%;min-height:600px"><?php esc_html_e('Values Image', 'cannaflex'); ?></div>
         <?php endif; ?>
     </div>
     <div class="our-values__content">
-        <h2><?php esc_html_e('Our Values', 'cannaflex'); ?></h2>
+        <h2 id="values-heading"><?php esc_html_e('Our Values', 'cannaflex'); ?></h2>
         <div class="values-list">
             <?php
             $values_json = get_post_meta($page_id, '_cfx_about_values', true);
             $values = $values_json ? json_decode($values_json, true) : null;
 
             if (! $values || ! is_array($values)) {
+                // Exact text from About page PDF
                 $values = [
-                    ['title' => 'Socials',        'text' => 'Empowering Moroccan farming communities through fair partnerships, education, and economic inclusion.'],
-                    ['title' => 'Sustainability',  'text' => 'Environmentally conscious practices from seed to shelf — minimizing waste and maximizing positive impact.'],
-                    ['title' => 'Innovation',      'text' => 'Investing in R&D and cutting-edge technology to push the boundaries of what cannabis can offer.'],
-                    ['title' => 'Authenticity',    'text' => 'Honoring the deep-rooted Moroccan cannabis heritage while meeting the highest global standards.'],
+                    [
+                        'title' => 'Socials',
+                        'text'  => "We believe cannabis can be a force for good — socially, culturally, and economically. That's why we invest in local communities, support small farmers, and promote ethical employment across our supply chain.\n\nBeyond production, we're committed to raising awareness and educating communities about the responsible use of cannabis. Through transparency, outreach, and informed dialogue, we help shift perceptions and support safe, stigma-free access to cannabis based products.",
+                    ],
+                    [
+                        'title' => 'Sustainability',
+                        'text'  => 'Respect for the earth is at the heart of our work. From eco-conscious cultivation practices to low-waste processing, we are dedicated to preserving natural resources and protecting Morocco\'s agricultural heritage for future generations.',
+                    ],
+                    [
+                        'title' => 'Innovation',
+                        'text'  => 'Driven by research and curiosity, we continually explore new technologies, formulations, and delivery systems to create cutting-edge cannabinoid products. Our innovation is rooted in tradition, yet focused on the future.',
+                    ],
+                    [
+                        'title' => 'Authenticity',
+                        'text'  => 'Every product we create reflects the spirit of Morocco — its land, its people, and its centuries-old relationship with cannabis. We stay true to our roots, honoring artisanal methods while delivering quality you can trust.',
+                    ],
                 ];
             }
 
             foreach ($values as $v) : ?>
                 <div class="value-item">
                     <h3><?php echo esc_html($v['title']); ?></h3>
-                    <p><?php echo esc_html($v['text']); ?></p>
+                    <?php echo wp_kses_post(wpautop(esc_html($v['text']))); ?>
                 </div>
             <?php endforeach; ?>
         </div>
@@ -92,9 +116,9 @@ $page_id = get_the_ID();
 </section>
 
 <!-- ===== OUR TEAM ===== -->
-<section class="our-team section">
+<section class="our-team section" aria-labelledby="team-heading">
     <div class="container">
-        <h2><?php esc_html_e('Our Team', 'cannaflex'); ?></h2>
+        <h2 id="team-heading"><?php esc_html_e('Our Team', 'cannaflex'); ?></h2>
         <p class="section-subtitle"><?php esc_html_e('Meet the People Behind Cannaflex', 'cannaflex'); ?></p>
 
         <div class="team-grid">
@@ -124,18 +148,14 @@ $page_id = get_the_ID();
                     </div>
                 <?php endforeach;
             else :
-                $fallback_team = [
-                    ['name' => 'Ahmed Benali',  'role' => 'CEO & Founder'],
-                    ['name' => 'Fatima Zahra',   'role' => 'Head of R&D'],
-                    ['name' => 'Youssef Amrani', 'role' => 'Export Director'],
-                ];
-                foreach ($fallback_team as $m) : ?>
+                // Fallback — 3 placeholder cards matching PDF layout
+                for ($i = 0; $i < 3; $i++) : ?>
                     <div class="team-card">
-                        <div class="placeholder-img team-card__photo" style="aspect-ratio:1"><?php echo esc_html($m['name']); ?></div>
-                        <h3><?php echo esc_html($m['name']); ?></h3>
-                        <p><?php echo esc_html($m['role']); ?></p>
+                        <div class="placeholder-img team-card__photo" style="aspect-ratio:1"><?php esc_html_e('Name', 'cannaflex'); ?></div>
+                        <h3><?php esc_html_e('Name', 'cannaflex'); ?></h3>
+                        <p><?php esc_html_e('Job Title', 'cannaflex'); ?></p>
                     </div>
-                <?php endforeach;
+                <?php endfor;
             endif;
             wp_reset_postdata();
             ?>
@@ -144,18 +164,21 @@ $page_id = get_the_ID();
 </section>
 
 <!-- ===== CTA STRIP ===== -->
-<section class="cta-strip">
+<section class="cta-strip" aria-labelledby="about-cta-heading">
     <div class="cta-strip__left">
-        <h2>
+        <h2 id="about-cta-heading">
             <?php
             $cta = get_post_meta($page_id, '_cfx_about_cta', true);
-            echo esc_html($cta ?: "Let's Shape the Future of Cannabis — Together.");
+            echo esc_html($cta ?: "Let\u{2019}s Shape the Future of Cannabis \u{2014} Together.");
             ?>
         </h2>
     </div>
     <div class="cta-strip__right">
         <div>
-            <p><?php esc_html_e('Partner with us and bring the power of Moroccan cannabis to your market — with integrity, efficiency, and impact.', 'cannaflex'); ?></p>
+            <?php
+            $cta_text = get_post_meta($page_id, '_cfx_about_cta_text', true);
+            ?>
+            <p><?php echo esc_html($cta_text ?: 'Partner with us and bring the power of Moroccan cannabis to your market — with integrity, efficiency, and impact.'); ?></p>
             <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn--secondary"><?php esc_html_e('Contact Us', 'cannaflex'); ?></a>
         </div>
     </div>

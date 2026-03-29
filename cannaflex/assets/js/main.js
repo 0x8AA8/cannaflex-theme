@@ -163,6 +163,32 @@
     });
   }
 
+  /* ---------- Product grid filter ---------- */
+  var filterTabs = document.querySelectorAll('.filter-tab');
+  var productGrid = document.getElementById('products-grid');
+
+  if (filterTabs.length && productGrid) {
+    filterTabs.forEach(function (tab) {
+      tab.addEventListener('click', function () {
+        // Update active state
+        filterTabs.forEach(function (t) { t.classList.remove('active'); });
+        tab.classList.add('active');
+
+        var filter = tab.getAttribute('data-filter');
+        var cards = productGrid.querySelectorAll('.product-grid-card');
+
+        cards.forEach(function (card) {
+          if (filter === 'all') {
+            card.style.display = '';
+          } else {
+            var cats = (card.getAttribute('data-category') || '').split(' ');
+            card.style.display = cats.indexOf(filter) > -1 ? '' : 'none';
+          }
+        });
+      });
+    });
+  }
+
   /* ---------- Lazy loading native fallback ---------- */
   if ('loading' in HTMLImageElement.prototype) {
     document.querySelectorAll('img[loading="lazy"]').forEach(function (img) {

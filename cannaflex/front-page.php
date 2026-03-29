@@ -22,7 +22,7 @@ $hero_img = cannaflex_get('hero_image');
     <div class="container">
         <div class="hero__content">
             <h1><?php echo esc_html(cannaflex_get('hero_heading', 'We are Leading the Change')); ?></h1>
-            <p><?php echo esc_html(cannaflex_get('hero_text', 'Pioneering legal cannabis from Morocco to the world — with quality, integrity, and innovation at every step.')); ?></p>
+            <?php echo wp_kses_post(wpautop(esc_html(cannaflex_get('hero_text', "We're redefining what cannabis can do. From Morocco's ancestral fields to international markets — we advance the legacy of Moroccan cannabis tradition, innovation, and craftsmanship to deliver premium, sustainable and high-quality cannabis products.\n\nJoin us in shaping the future of responsible, sustainable, and high-quality cannabis.")))); ?>
             <a href="<?php echo esc_url(cannaflex_get('hero_btn_url', '/contact')); ?>" class="btn btn--primary">
                 <?php echo esc_html(cannaflex_get('hero_btn_text', 'Join Us')); ?>
             </a>
@@ -44,7 +44,8 @@ $hero_img = cannaflex_get('hero_image');
         </div>
         <div class="home-about__text">
             <h2><?php echo esc_html(cannaflex_get('home_about_heading', 'About Us')); ?></h2>
-            <p><?php echo esc_html(cannaflex_get('home_about_text', 'From the ancestral cradle of Moroccan cannabis to the global market, Cannaflex embodies the fusion of tradition and innovation. Rooted in the Rif Mountains, we cultivate, extract, transform, and export premium cannabis-derived products with integrity and purpose.')); ?></p>
+            <p class="home-about__intro"><?php echo esc_html(cannaflex_get('home_about_intro', "From the ancestral cradle of Moroccan cannabis to the global market \u{2014} we're the partner you can trust.")); ?></p>
+            <?php echo wp_kses_post(wpautop(esc_html(cannaflex_get('home_about_text', "At the heart of the Rif Mountains \u{2014} the ancestral cradle of Moroccan cannabis. This region's rich soil, unique microclimate, and deep cultural legacy have made it one of the world's most iconic cannabis-growing regions.\n\nWe honor that heritage by cultivating each plant with care and harvesting it with respect, using time-honored traditions passed down through generations of Moroccan farmers.\n\nMore than a producer, we're your global growth partner. Cannaflex's robust international network offers scalable, compliant cannabis solutions delivered to your market.")))); ?>
             <a href="<?php echo esc_url(home_url('/about/')); ?>" class="btn btn--primary">
                 <?php echo esc_html(cannaflex_get('home_about_btn', 'Learn More')); ?>
             </a>
@@ -65,16 +66,16 @@ $hero_img = cannaflex_get('hero_image');
             <?php endif; ?>
             <div class="seed-to-shelf__overlay">
                 <h2><?php echo esc_html(cannaflex_get('seed_heading', 'From Seed to Shelf')); ?></h2>
-                <p><?php echo esc_html(cannaflex_get('seed_text', 'We control every step of the cannabis value chain — from cultivation in the Rif Mountains to finished products ready for global markets.')); ?></p>
+                <p><?php echo esc_html(cannaflex_get('seed_text', 'We control every step of the cannabis value chain — from cultivation in the Rif Mountains to finished products ready for global markets. This guarantees consistency, traceability, and outstanding quality across our full range of cannabis products.')); ?></p>
                 <a href="<?php echo esc_url(home_url('/activity/')); ?>" class="btn btn--white"><?php esc_html_e('Learn More', 'cannaflex'); ?></a>
             </div>
         </div>
         <div class="process-tiles">
             <?php
             $tiles = [
-                ['title' => 'Agriculture',                  'text' => 'Traditional and modern cultivation techniques in the Rif region, ensuring premium-quality raw materials.', 'icon' => 'leaf'],
-                ['title' => 'Transformation',               'text' => 'State-of-the-art extraction and processing facilities transform raw cannabis into high-value products.', 'icon' => 'cycle'],
-                ['title' => 'Commercialisation and Export',  'text' => 'Global distribution network bringing Moroccan cannabis products to international markets.', 'icon' => 'globe'],
+                ['title' => 'Agriculture',                  'text' => 'We partner with agricultural cooperatives authorized by Morocco\'s National Cannabis Agency (ANRAC) to cultivate cannabis in full compliance with Moroccan regulations.', 'icon' => 'leaf'],
+                ['title' => 'Transformation',               'text' => 'We transform and process cannabis into high-quality products, ensuring all certifications and standards are met throughout the production chain.', 'icon' => 'cycle'],
+                ['title' => 'Commercialisation and Export',  'text' => 'We sell and distribute our products locally and internationally in strict compliance to current Moroccan regulations, ensuring quality and compliance across all markets.', 'icon' => 'globe'],
             ];
 
             $icons = [
@@ -104,7 +105,7 @@ $hero_img = cannaflex_get('hero_image');
 <section class="products-section section">
     <div class="container">
         <h2><?php echo esc_html(cannaflex_get('products_heading', 'Our Products')); ?></h2>
-        <p class="section-subtitle"><?php echo esc_html(cannaflex_get('products_text', 'Explore our range of premium cannabis-derived products.')); ?></p>
+        <p class="section-subtitle"><?php echo esc_html(cannaflex_get('products_text', 'We offer a comprehensive range of premium cannabis products, from dermatological to medical that not only meet manufacturing standards, but also comply with local and international regulations. Each product embodies the legacy of Moroccan craftsmanship — a refined blend of traditional know-how that reflects our unwavering commitment to authenticity, quality, and the healing power of Moroccan cannabis.')); ?></p>
 
         <div class="products-slider" aria-label="<?php esc_attr_e('Product categories', 'cannaflex'); ?>">
             <div class="products-slider__track" id="products-track">
@@ -166,7 +167,7 @@ $hero_img = cannaflex_get('hero_image');
 <section class="brands-strip section">
     <div class="container">
         <h2><?php echo esc_html(cannaflex_get('brands_heading', 'Discover our Brands')); ?></h2>
-        <p><?php echo esc_html(cannaflex_get('brands_text', 'Our family of brands delivers quality and innovation across categories.')); ?></p>
+        <p><?php echo esc_html(cannaflex_get('brands_text', 'Explore our distinct brands, each with its own identity, unified by the values at the heart of our company.')); ?></p>
 
         <div class="brands-grid">
             <?php
@@ -185,7 +186,7 @@ $hero_img = cannaflex_get('hero_image');
                     <?php endif;
                 endforeach;
             else :
-                $fallback_brands = ['VAPOCAN', 'FITOBOTANIKA', 'RIFGOLD', 'CRAWN'];
+                $fallback_brands = ['VAPOCAN', 'FITOBOTANIKA', 'RifGold'];
                 foreach ($fallback_brands as $b) : ?>
                     <span style="font-size:1.25rem;font-weight:700;letter-spacing:0.1em;opacity:0.85"><?php echo esc_html($b); ?></span>
                 <?php endforeach;
@@ -228,22 +229,15 @@ $hero_img = cannaflex_get('hero_image');
                     <article class="timeline__item">
                         <span class="timeline__year">2025</span>
                         <span class="timeline__date">04 April</span>
-                        <h3>New CBD Skincare Line Launching Soon</h3>
-                        <p>Our new cosmetics line brings the finest Moroccan cannabis extracts to skincare.</p>
+                        <h3><?php esc_html_e('New CBD Skincare Line Launching Soon', 'cannaflex'); ?></h3>
+                        <p><?php esc_html_e('Join us at the forefront as we bring the future of cannabis in Africa — together.', 'cannaflex'); ?></p>
                         <a href="#"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
                     </article>
                     <article class="timeline__item">
                         <span class="timeline__year">2025</span>
                         <span class="timeline__date">07 June</span>
-                        <h3>Cannaflex at Africa ConnaTech Expo 2025</h3>
-                        <p>Join us at the premier cannabis technology exhibition in Casablanca.</p>
-                        <a href="#"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
-                    </article>
-                    <article class="timeline__item">
-                        <span class="timeline__year">2025</span>
-                        <span class="timeline__date">15 September</span>
-                        <h3>Expansion Into European Markets</h3>
-                        <p>New distribution partnerships across Germany, France, and the Netherlands.</p>
+                        <h3><?php esc_html_e('Cannaflex at Africa CannaTech Expo 2025', 'cannaflex'); ?></h3>
+                        <p><?php esc_html_e("Africa's premier cannabis technology event. Let's shape the future of cannabis in Africa — together.", 'cannaflex'); ?></p>
                         <a href="#"><?php esc_html_e('Read More', 'cannaflex'); ?></a>
                     </article>
                 <?php endif;
