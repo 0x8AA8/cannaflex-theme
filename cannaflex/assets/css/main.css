@@ -31,8 +31,8 @@
   --section-pad-x: clamp(1rem, 3vw, 2rem);
   --gap: clamp(1.5rem, 3vw, 3rem);
 
-  --radius: 6px;
-  --radius-lg: 12px;
+  --radius: 3px;
+  --radius-lg: 6px;
   --transition: 0.3s ease;
 }
 
@@ -243,7 +243,6 @@ p + p { margin-top: 1em; }
 .form-control:focus {
   outline: none;
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(31, 102, 86, 0.15);
 }
 
 .form-control:invalid:not(:placeholder-shown) {
@@ -564,7 +563,7 @@ select.form-control {
   object-fit: cover;
 }
 
-/* --- Home About split (PDF: large left media + right content panel) --- */
+/* --- Home About split (PDF: left media with centered badge + right content) --- */
 .home-about-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -573,12 +572,24 @@ select.form-control {
 .home-about-split__media {
   overflow: hidden;
   min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-accent);
 }
 
-.home-about-split__media img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.home-about-split__badge-img {
+  max-width: 320px;
+  width: 80%;
+  height: auto;
+  object-fit: contain;
+}
+
+.home-about-split__badge-fallback {
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-about-split__content {
@@ -610,25 +621,23 @@ select.form-control {
   align-self: flex-start;
 }
 
-/* --- Seed-to-Shelf mosaic grid (PDF: text card left + 3 icon cards right) --- */
-.seed-chain__grid {
+/* --- Seed Flow grid (PDF: intro+image left cols, 3 icon cards right col) --- */
+.seed-flow__grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto auto;
   gap: var(--gap);
 }
 
-.seed-chain__text-card {
-  grid-row: 1 / -1;
+.seed-flow__card--intro {
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  min-height: 480px;
+  min-height: 320px;
   display: flex;
   align-items: flex-end;
 }
 
-.seed-chain__bg-img {
+.seed-flow__card-bg {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -637,7 +646,7 @@ select.form-control {
   z-index: 0;
 }
 
-.seed-chain__text-card::after {
+.seed-flow__card--intro::after {
   content: '';
   position: absolute;
   inset: 0;
@@ -645,30 +654,34 @@ select.form-control {
   z-index: 1;
 }
 
-.seed-chain__text-inner {
+.seed-flow__card-inner {
   position: relative;
   z-index: 2;
   padding: 2.5rem;
   color: var(--color-white);
 }
 
-.seed-chain__text-inner h2 {
+.seed-flow__card-inner h2 {
   color: var(--color-white);
   margin-bottom: 0.75rem;
 }
 
-.seed-chain__text-inner p {
+.seed-flow__card-inner p {
   font-size: var(--fs-small);
   opacity: 0.9;
   margin-bottom: 1.25rem;
 }
 
-.seed-chain__icon-card {
+.seed-flow__card--icon {
   text-align: center;
   padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
-.seed-chain__icon {
+.seed-flow__icon {
   width: 56px;
   height: 56px;
   border-radius: 50%;
@@ -676,25 +689,37 @@ select.form-control {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 1rem;
+  margin-bottom: 1rem;
 }
 
-.seed-chain__icon svg {
+.seed-flow__icon svg {
   width: 28px;
   height: 28px;
   stroke: var(--color-primary);
   fill: none;
 }
 
-.seed-chain__icon-card h3 {
+.seed-flow__card--icon h3 {
   color: var(--color-primary);
   margin-bottom: 0.375rem;
   font-size: 1.125rem;
 }
 
-.seed-chain__icon-card p {
+.seed-flow__card--icon p {
   font-size: var(--fs-small);
   color: #555;
+}
+
+.seed-flow__media {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  min-height: 300px;
+}
+
+.seed-flow__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 /* --- Products slider --- */
@@ -850,7 +875,7 @@ select.form-control {
   opacity: 1;
 }
 
-/* --- News timeline (composed 2-col grid with central axis) --- */
+/* --- News timeline (horizontal axis with top/bottom cards per PDF) --- */
 .news-timeline {
   background: var(--color-white);
 }
@@ -865,65 +890,71 @@ select.form-control {
   margin-bottom: 3rem;
 }
 
-.timeline-composed {
+.timeline-h {
   position: relative;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 2rem 0;
-  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  min-height: 420px;
+  padding: 0 1rem;
 }
 
-/* Central vertical axis */
-.timeline-composed::before {
-  content: '';
+/* Horizontal central line */
+.timeline-h__axis {
   position: absolute;
-  top: 0;
-  left: 50%;
-  width: 2px;
-  height: 100%;
+  left: 0;
+  right: 0;
+  top: 50%;
+  height: 2px;
   background: var(--color-primary);
-  transform: translateX(-50%);
+  transform: translateY(-50%);
 }
 
-.timeline-composed__item {
+.timeline-h__item {
   position: relative;
-}
-
-/* Left items sit in column 1, right items in column 2 */
-.timeline-composed__item--left {
-  grid-column: 1;
-  padding-right: 2.5rem;
-  text-align: right;
-}
-
-.timeline-composed__item--right {
-  grid-column: 2;
-  padding-left: 2.5rem;
+  flex: 1;
+  min-width: 0;
 }
 
 /* Dot on axis */
-.timeline-composed__item::before {
-  content: '';
+.timeline-h__dot {
   position: absolute;
-  top: 1rem;
+  left: 1.5rem;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: var(--color-primary);
   border: 2px solid var(--color-white);
   box-shadow: 0 0 0 2px var(--color-primary);
-  z-index: 1;
+  z-index: 2;
 }
 
-.timeline-composed__item--left::before {
-  right: -6px;
+/* Top items: card above line, dot at bottom */
+.timeline-h__item--top {
+  align-self: flex-start;
+  padding-bottom: 2rem;
 }
 
-.timeline-composed__item--right::before {
-  left: -6px;
+.timeline-h__item--top .timeline-h__dot {
+  bottom: -6px;
+  top: auto;
 }
 
-.timeline-composed__year {
+/* Bottom items: card below line, dot at top */
+.timeline-h__item--bottom {
+  align-self: flex-end;
+  padding-top: 2rem;
+}
+
+.timeline-h__item--bottom .timeline-h__dot {
+  top: -6px;
+  bottom: auto;
+}
+
+.timeline-h__card {
+  padding: 0 1rem;
+}
+
+.timeline-h__year {
   font-size: 2rem;
   font-weight: var(--fw-bold);
   color: var(--color-primary);
@@ -931,25 +962,25 @@ select.form-control {
   display: block;
 }
 
-.timeline-composed__date {
+.timeline-h__date {
   font-size: var(--fs-small);
   color: #777;
   display: block;
   margin-bottom: 0.25rem;
 }
 
-.timeline-composed__card h3 {
+.timeline-h__card h3 {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
 
-.timeline-composed__card p {
+.timeline-h__card p {
   font-size: var(--fs-small);
   color: #555;
   margin-bottom: 0.5rem;
 }
 
-.timeline-composed__card a {
+.timeline-h__card a {
   color: var(--color-primary);
   font-weight: var(--fw-semibold);
   font-size: var(--fs-small);
@@ -1212,8 +1243,7 @@ select.form-control {
 }
 
 .cta-strip__heading {
-  background: var(--color-primary);
-  color: var(--color-white);
+  background: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1221,7 +1251,7 @@ select.form-control {
 }
 
 .cta-strip__heading h2 {
-  color: var(--color-white);
+  color: var(--color-primary);
   max-width: 400px;
 }
 
@@ -1231,8 +1261,7 @@ select.form-control {
   align-items: center;
   justify-content: center;
   padding: 3rem;
-  background-color: var(--color-accent);
-  background-image: linear-gradient(rgba(0,0,0,.4), rgba(0,0,0,.4)), var(--cta-bg, none);
+  background-color: var(--color-primary);
   background-size: cover;
   background-position: center;
 }
@@ -1470,39 +1499,39 @@ select.form-control {
   }
 
   .home-about-split__media {
-    min-height: 300px;
+    min-height: 280px;
     max-height: 400px;
   }
 
-  .seed-chain__grid {
+  .seed-flow__grid {
     grid-template-columns: 1fr;
   }
 
-  .seed-chain__text-card {
-    grid-row: auto;
-    min-height: 350px;
+  .seed-flow__card--intro {
+    min-height: 300px;
   }
 
-  .timeline-composed {
-    display: block;
+  /* Timeline stacks vertically on tablet */
+  .timeline-h {
+    flex-direction: column;
+    align-items: stretch;
+    min-height: auto;
+    gap: 2rem;
+    padding: 0;
   }
 
-  .timeline-composed::before {
-    left: 1.5rem;
+  .timeline-h__axis {
+    display: none;
   }
 
-  .timeline-composed__item--left,
-  .timeline-composed__item--right {
-    padding-left: 3rem;
-    padding-right: 0;
-    text-align: left;
-    margin-bottom: 2rem;
+  .timeline-h__item--top,
+  .timeline-h__item--bottom {
+    align-self: auto;
+    padding: 0;
   }
 
-  .timeline-composed__item--left::before,
-  .timeline-composed__item--right::before {
-    left: calc(1.5rem - 5px);
-    right: auto;
+  .timeline-h__dot {
+    display: none;
   }
 
   .split,
