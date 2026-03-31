@@ -1,0 +1,1 @@
+<a href="{$link->getModuleLink('dorblockwishlist', 'dorwishlist', array(), true)|addslashes}" class="total-wishlist"><span><i class="pe-7s-like"></i></span><strong>{if isset($wishlists) && isset($wishlists[0]) && $wishlists[0]['counter'] != ""}{$wishlists[0]['counter']}{else}0{/if}</strong></a>

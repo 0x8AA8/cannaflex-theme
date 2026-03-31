@@ -1,0 +1,393 @@
+
+
+/*****About Us*****/
+
+.info-about-txt * {
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 22px;
+}
+.about-media-item {
+    max-height: 500px;
+    overflow: hidden;
+}
+.page-content.page-cms{padding: 0px;}
+.info-about-media > div {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+.info-about-media{float: right;}
+.about-us-item-media > img {
+    max-width: 100%;
+    width: 100% !important;
+    height: auto;
+}
+.info-about-media img {
+    height: auto;
+    max-width: 100%;
+}
+#dor-about-us > div {
+    margin-bottom: 50px;
+}
+#dor-about-us h2 {
+    font-weight: 400;
+    letter-spacing: 0.03em;
+    margin-bottom: 50px;
+    position: relative;
+    text-align: center;
+    text-transform: none;
+}
+#dor-about-us h2::before {
+    background: #ddd none repeat scroll 0 0;
+    bottom: -15px;
+    content: "";
+    height: 2px;
+    left: calc(50% - 20px);
+    position: absolute;
+    width: 40px;
+}
+.about-us-item-info {
+    text-align: center;
+}
+.about-us-item-info > h3 {
+    font-size: 15px;
+    margin-bottom: 0;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+.about-us-item-info > span {
+    color: #606060;
+    font-size: 14px;
+    font-weight: 300;
+}
+.live-social-connect-about-us {
+    padding-top: 7px;
+}
+.live-social-connect-about-us > a {
+    color: #333;
+    display: inline-block;
+    padding: 0 8px;
+}
+.live-social-connect-about-us > a:hover i{
+  color: #67bd45;
+}
+/****About Us V2****/
+
+.about-us-v2-group {
+    padding-bottom: 95px;
+}
+.about-us-v2-sigle h3 {
+    font-weight: 400;
+    margin-bottom: 25px;
+    text-transform: none;
+    margin-top: 0px;
+}
+.skill-process-line > label {
+    display: block;
+    font-weight: 400;
+    text-align: left;
+    font-size: 14px;
+}
+.skill-line-bg {
+    background: #ddd none repeat scroll 0 0;
+    border-radius: 3px;
+    display: block;
+    height: 8px;
+    width: 100%;
+    position: relative;
+}
+.skill-line-processed {
+    background: #67bd45 none repeat scroll 0 0;
+    border-radius: 3px;
+    display: block;
+    height: 100%;
+    position: absolute;
+}
+.skill-line-processed > em {
+    position: absolute;
+    right: 0;
+    top: -29px;
+}
+.skill-process-line {
+    padding-bottom: 30px;
+    padding-top: 10px;
+}
+.about-us-v2-line {
+    line-height: 23px;color: #333;padding-bottom: 15px;
+}
+.about-us-v2-line p{color: #333;}
+.list-service > li {
+    padding-bottom: 15px;position: relative;
+}
+.list-service {
+    padding-left: 35px;
+}
+.list-service > li::before{
+  display: inline-block;
+  font: normal normal normal 18px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: absolute;
+  content: "\f05d";
+  left: -32px;
+  top: 6px;
+  color: #67bd45;
+  font-size: 18px;
+  font-weight: 100;
+}
+.about-us-v2-sigle img {
+    height: auto;
+    width: 100%;
+}
+.quot-aboutus {
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 20px;
+    padding-left: 25px;
+    padding-right: 25px;
+    position: relative;
+}
+.quot-aboutus::before{
+  position: absolute;
+  left: 0px;
+  width: 3px;
+  background: #67bd45;
+  height: 100%;
+  content: "";
+}
+#about-us-v2 .about-us-persion-inner h2 {
+    font-size: 25px;
+    font-weight: 400;
+    margin-bottom: 45px;
+    text-align: center;
+    text-transform: none;
+}
+/****End About Us V2****/
+/**********About Us 3**********/
+#accordion .panel-title > a i {
+    background: #777 none repeat scroll 0 0;
+    border-radius: 2px;
+    color: #fff;
+    display: inline-block;
+    font-size: 12px;
+    height: 14px;
+    line-height: 15px;
+    margin-right: 10px;
+    position: relative;
+    text-align: center;
+    top: -2px;
+    width: 14px;
+}
+#accordion .panel-body {
+    border: medium none;
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    padding-left: 45px;
+    padding-right: 45px;
+    padding-top: 0;
+    text-align: left;
+}
+#cms.dor-page-cms #wrapper > .container {
+    max-width: 100%;
+    width: 100%;
+}
+
+.aboutus-rule-company {
+    background: #f6f7f7 none repeat scroll 0 0;
+    margin-left: -15px;
+    margin-right: -15px;
+    padding-bottom: 25px;
+    padding-top: 30px;
+}
+#accordion .panel-default > .panel-heading{
+    background: none;border:none;
+}
+#accordion .panel-default{
+    background: none;border:none;box-shadow: none;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.aboutus-rule-company .panel-title > a {
+    color: #101010;
+    font-size: 13px;
+    text-transform: uppercase;
+}
+.aboutus-rule-company .panel-group .panel + .panel{margin-top: 0px;}
+
+.aboutus-sayclient li {
+    background: #fff none repeat scroll 0 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    color: #393939;
+    min-height: 270px;
+    padding: 25px;
+    text-align: left;
+}
+.aboutus-sayclient li p {
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 25px;
+}
+.author-client-info{
+    position: absolute;
+    bottom: 25px;
+    width: 100%;
+    left: 25px;
+}
+.author-client-info > h3 {
+    font-size: 15px;
+    font-weight: 400;
+    color: #67bd45;
+}
+.author-client-info > span {
+    color: #777;
+    font-size: 13px;
+    font-style: italic;
+    font-weight: 300;
+}
+.aboutus-rule-company .owl-dots {
+    text-align: center;padding-top: 40px;
+}
+.aboutus-rule-company .owl-dot{
+    display: inline-block;padding-left: 5px;padding-right: 5px;
+}
+.aboutus-rule-company .owl-dot > span {
+    background: #303030 none repeat scroll 0 0;
+    border-radius: 50%;
+    display: block;
+    height: 7px;
+    width: 7px;
+}
+.aboutus-rule-company .owl-dot.active > span {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    border: 1px solid #303030;
+    height: 11px;
+    position: relative;
+    top: 2px;
+    width: 11px;
+}
+.aboutus-sayclient .owl-controls .owl-nav > div {
+    border-radius: 0;
+    bottom: -16px;
+    height: 35px;
+    line-height: 35px;
+    top: auto;
+    width: 35px;
+    background: #fff;
+}
+.aboutus-sayclient .owl-controls .owl-nav > div:hover i{color: #fff;}
+.aboutus-sayclient .owl-controls .owl-nav > div.owl-prev {
+    right: 34px;
+}
+.aboutus-sayclient .owl-controls .owl-nav {
+    margin-right: calc(50% - 35px);
+    position: relative;
+}
+
+.dor-about-compay-content > p {
+    color: #303030;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 30px;
+    padding-left: 90px;
+    padding-right: 50px;
+    position: relative;
+    text-align: left;
+}
+.dor-about-compay-content > p::before{
+    content: "";
+    position: absolute;
+    width: 65px;
+    height: 1px;
+    background: #303030;left: 0px;top: 15px;
+}
+
+#dor-aboutus-main h2 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    position: relative;
+    text-transform: none;
+    font-weight: 300;
+}
+#dor-aboutus-main h2::after{
+    content: "";
+    position: absolute;
+    width: 80px;
+    height: 1px;
+    background-color: #393939;
+    bottom: 0px;
+    left: 0px;
+}
+#dor-aboutus-main h2 strong{
+    font-weight: 400;
+}
+.dor-about-service h2::after,
+#dor-aboutus-main .dor-about-info-company h2::after{display: none;}
+.our-moreinfo-inner {
+    color: #393939;
+    text-align: left;
+}
+.dor-about-compay-media img {
+    height: auto;
+    max-width: 100%;
+}
+.our-moreinfo-inner p {
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 25px;
+    margin: 0;
+}
+.aboutus-our-moreinfo {
+    padding-top: 30px;
+}
+.dor-about-service{
+    padding: 30px 0;
+}
+.about-service-inner {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.about-service-item-inner i {
+    font-size: 30px;color: #67bd45;
+}
+.about-service-item-inner > h3 {
+    color: #67bd45;
+    font-size: 18px;
+    font-weight: 300;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+}
+.about-service-item-inner > h3::after{
+    content: "";
+    position: absolute;
+    width: 50px;
+    height: 1px;
+    background-color: #67bd45;
+    bottom: 0px;
+    left: 0px;
+    color: #67bd45;
+}
+.about-service-item-inner > p {
+    color: #777;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 26px;
+    text-align: left;
+}
+.aboutus-rule-company .panel-title > a:hover{
+    color: #67bd45;
+}
+.aboutus-rule-company .panel-title > a:hover i{
+    background: #67bd45 !important;
+}
+/**********End About Us 3**********/

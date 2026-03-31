@@ -1,0 +1,113 @@
+main{overflow: hidden;}
+#product_comparison .h5-name-product a{
+    color: #333;
+}
+.form-control::placeholder{
+    color: #999 !important;
+}
+.dor-megamenu ul.navbar-nav > li > a:hover > span.menu-title::after, .dor-megamenu ul.navbar-nav > li.active > a > span.menu-title::after,
+.dorNavSlider>div.av, .dorNavSlider>div:hover, .widget-content .widget-heading.title_block::before, .title-header-tab p span::after,
+.title-header-tab p span::before, .cart-button.button.ajax_add_to_cart_button.add-to-cart, .dor-load-more-tab span,
+#main-newsletter-footer .btn.btn-primary, #to-top::after, .biz-group .biz-tabtitle span::after, .productscategory_h2 > span::after,
+#registerFormSmart.dor-formsmart .smartdor-footer.form-footer .btn-primary, .dor-formsmart .smartdor-footer.form-footer .btn-primary,
+#blockcart-modal .cart-content .cart-content-btn .btn.btn-primary, #blockcart-modal .modal-header,
+.button-act-minicart a.mini-cart-view, .custom-radio input[type="radio"]:checked + span, .dor-cus-loginform-text::before,
+.title_block::before, .category-top-menu .text-uppercase.h6::before, #left-column .text-uppercase.h6::before, #right-column .text-uppercase.h6::before,
+#subcategories .owl-controls .owl-dots .owl-dot:hover span, #subcategories .owl-controls .owl-dots .owl-dot.active span,
+#dor-header01 .dorHeaderSearch-Wapper, #dor-header03 .dorHeaderSearch-Wapper, #content .product-flags > li.product-flag.new,
+.pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > span.page-active, .data-item-blog-v3 .times-blog-date,
+#dor-topbar03 > .dor-topbar-inner, #dor-topbar02 > .dor-topbar-inner, .skill-line-processed, .subscribe .alt.fancy-button,
+.actions-footer-sidebar > a.dor-sidebar-compare, .compare_footer_link .button.lnk_view.btn.btn-default{
+    background-color: #77d0e4;
+}
+#product_comparison .cart-button.button.ajax_add_to_cart_button.add-to-cart:hover span,
+.ui-slider .ui-slider-range.ui-widget-header, .dorFilterInner input[name="submit_range"]:hover, .dorFilterInner .ui-slider-horizontal .ui-slider-handle,
+.products-sort-order .select-list:hover, body#category main article.dor-list-display .action-button ul li a.add-to-cart:hover span,
+#submitNewMessage, #submitComment:hover, #submitMessage:hover, .aboutus-rule-company .panel-title > a:hover i,.about-service-item-inner > h3::after{
+    background-color: #77d0e4 !important;
+}
+header#header .dor-megamenu li:hover > a, .cart-button.button.ajax_add_to_cart_button.add-to-cart:hover *, .dor-button-connect > a:hover, .page-my-account #content .links a span.link-item:hover *,
+header#header .dor-megamenu li a:hover, .compare-product-button .add_to_compare:hover *, .dor-compare-button-fel .add_to_compare:hover *, .page-my-account #content .links a span.link-item:hover,
+header#header .header-nav .right-nav button:hover i,.title-header-tab p span, a.quick-view.countdown-view-detail:hover *, .dor-breadcrumb ul li > a:hover *,
+.countdown-daily span, #countdown-data .control-action-buttons ul li a:hover i, .product-miniature .product-container .product-add-wishlist .addToDorWishlist *,
+.product-name:hover, .dor-biz-product .owl-controls .owl-nav > div:hover *, footer#footer a:hover, .footer-newsletter-social li a:hover *, .author-client-info > h3,
+#countdown-data .cart-button.button.ajax_add_to_cart_button.add-to-cart:hover span, #header .header-nav .blockcart .header:hover i, .aboutus-rule-company .panel-title > a:hover,
+.dropdown-menu > li.current > a, .dropdown-menu > li > a:focus, .dropdown-menu > li > a:hover, header#header .user-info .toogle_content > li > a:hover, 
+header#header .user-info .toogle_content > li > a:hover *, #blockcart-modal .cart-content .cart-content-btn .btn.btn-primary:hover,.tags_block .block_content > a:hover,
+.button-act-minicart a.mini-cart-view:hover, .cart-summary-products a[data-toggle="collapse"], #content-hook_order_confirmation .h1.card-title > span,
+.product-line-grid-body .product-line-info:first-child a.label:hover, .product-line-info > span.label, body#checkout #cart-summary-product-list .media-body .product-price.pull-xs-right,
+.owl-controls .owl-nav > div:hover *, .block-categories .collapse-icons:hover *, #search_filters .facet .facet-label:hover *, .about-service-item-inner i,
+body#category main article.dor-list-display .product-price-and-shipping span.price, #subcategories li a:hover h3, .dor-breadcrumb ul li > a:hover,
+#product .product-information .dor-wishlist .addToDorWishlist:hover *, #product .product-information .compare-product-button .add_to_compare:hover *,
+#product .social-sharing > span.hidden:hover, #tabInfoproduct.tabs .nav-tabs .nav-link.active, #tabInfoproduct.tabs .nav-tabs .nav-link:hover, .subscribe .alt.fancy-button:hover,
+.blog-post-content-area .title-desc a:hover h4, .blog-content .readmore:hover, #recent_article_smart_blog_block_left .popular-post-details a:hover,
+#category_blog_block_left .sideber-menu a:hover, #sdssearch_block_top .btn.button-search, #smartblogcat .img-wrap h3 a:hover, .group-contact-form .social-connect-icon a:hover *,
+.author-content-info .shere-post li a:hover *, .single-post-tags > a:hover, .share-blog-widget.pull-right:hover *, #contact-form-v1 .list-contact-info a,
+.header-tab-gallery > li.active a, .header-tab-gallery > li a:hover, .user-info.selection-options-wrapper .line-selected.hidden:hover i,
+.user-info .toogle_content .btn.btn-default.signout-button:hover i, .live-social-connect-about-us > a:hover i, .list-service > li::before{
+    color: #77d0e4 !important;
+}
+a, header#header a:hover, header#header a:hover *, .product-price-and-shipping span, .slider-content.current .dor-slider-caption, .checkout.cart-detailed-actions.card-block .btn.btn-primary,
+.widget-content ul.nav-links li:hover::before, .dor-megamenu .navbar-nav > li > .dropdown-menu li .widget-inner.block_content li:hover::before, .dor-megamenu .navbar-nav > li.parent.dropdown.aligned-left ul li:hover::before, 
+.dor-megamenu .navbar-nav > li.parent.dropdown.aligned-right ul li:hover::before, .box-html-inner h2, .dor-about-icon .icons, .btn.btn-scale.btn-go-cate, .subscribe-me .login-wrap > p > span,
+.dor-megamenu ul.navbar-nav > li.active > a > span.menu-title, .dor-megamenu ul.navbar-nav > li > a:hover > span.menu-title, #header .header-nav .cart-preview .body .cart-total span,
+.slider-content.current .slider-read-more a:hover span, .slider-content.current .slider-read-more a:first-child span, .mini-cart-info > span.product-price,
+.countdown-daily .item-time::after, .countdown-daily span, #countdown-data .control-action-buttons ul li a:hover *, .dor-load-more-tab span:hover, .dor-tab-product-category-wrapper .nav > li > a:hover,
+.dor-tab-product-category-wrapper .nav > li.active > a, .dor-tab-product-category-wrapper .nav > li > a:focus, #testimonials-wrapper > h3 > span, .about-service-item-inner > h3,
+#dor-blog-home-style4 .item-content-blog .entry-title a:hover, .block_newsletter p span, #cart-subtotal-products > span.label.js-subtotal, .cart-title .h2 span span,
+.item-content-blog .entry-title a:hover, .footer-bottom-info-wapper a, .smart-sign-txt > span, .cart-content > p, #blockcart-modal .cart-content .cart-content-btn .btn:hover,
+#checkout .nav-link.active, #customer-form section > p > span.font-weight-bold, #checkout .nav-link:hover, #submitComment, #submitMessage, #ordertrack,
+.list-compare-left ul li:hover a, .list-compare-left ul li:hover span, .infoCompareInner > h3 > i, .noty_text_body strong, .noty_text_body a, #product_comparison .h5-name-product a:hover, #product_comparison .add-to-cart i, #product_comparison .add-to-cart span,
+#contact-form-v2 .list-contact-info a, #contact-form-v3 .list-contact-info a, .about-group-steps .icon-item, .farm-icon i, .farm-service-item > a:hover, .farmer-item > span:hover,
+.blog-post-content-area .blog-info a, .blog-post-content-area .blog-info .author-name > a, .blog-post-content-area .blog-info a, .blog-post-content-area .blog-info .author-name > a,
+body#checkout section.checkout-step .forgot-password a, .carrier-price, #mywishlist header h3 span, #product-details .product-reference span, #product-details .product-quantities span,
+.block-categories .category-sub-menu li[data-depth="0"] > a:hover, .block-categories .category-sub-menu li a:hover, .block-categories .category-sub-menu .category-sub-link:hover{
+    color: #77d0e4;
+}
+.dor-block-selection .dor-setting-lists, .dor-megamenu .navbar-nav > li > .dropdown-menu, .dor-megamenu .dropdown-submenu .dropdown-menu, .about-service-item-inner > h3::after,
+.slider-content.current .slider-read-more a:hover span, .slider-content.current .slider-read-more a:first-child span, .dor-load-more-tab span,
+#countdown-data .cart-button.button.ajax_add_to_cart_button.add-to-cart:hover span, #countdown-data .control-action-buttons ul li a:hover, 
+#countdown-data .control-action-buttons ul li a:hover *, .dor-tab-product-category-wrapper .nav > li.active > a, .dor-tab-product-category-wrapper .nav > li > a:focus,
+.dor-tab-product-category-wrapper .nav > li > a:hover, .js-product-miniature .product-container:hover .product-image-container, .note-info-detail-blog::after,
+.cart-button.button.ajax_add_to_cart_button.add-to-cart, .dor-compare-button-fel .add_to_compare:hover, a.quick-view.countdown-view-detail:hover,
+.dor-biz-product .owl-controls .owl-nav > div:hover, .footer-newsletter-social li a:hover, #to-top::before, #to-top::after, .social-connect-icon a:hover,
+#blockcart-modal .cart-content .cart-content-btn .btn.btn-primary:hover, #blockcart-modal .cart-content .cart-content-btn .btn:hover,
+.button-act-minicart a.mini-cart-view, .checkout.cart-detailed-actions.card-block .btn.btn-primary, .tags_block .block_content > a:hover,
+.page-my-account #content .links a span.link-item:hover, .owl-controls .owl-nav > div:hover, .ajax_block_product_sidebar:hover .product-image-container-sidebar,
+#search_filters .facet .facet-label:hover .custom-checkbox input[type="checkbox"] + span, body#category main article.dor-list-display .action-button ul li a.add-to-cart:hover span,
+body#category main article.dor-list-display .action-button ul li a:hover, #product .product-information .dor-wishlist .addToDorWishlist:hover,
+#product .product-information .compare-product-button .add_to_compare:hover, #product .social-sharing > span.hidden:hover, .farm-icon i,
+.product-images > li.thumb-container > .thumb.selected, .product-images > li.thumb-container > .thumb:hover, .dor-wishlist > a#wishlist_button:hover,
+#tabInfoproduct.tabs .nav-tabs .nav-link.active, #tabInfoproduct.tabs .nav-tabs .nav-link:hover, .blog-content .readmore:hover, #ordertrack,
+#submitComment, .share-blog-widget.pull-right:hover .blog-icon-share, #submitMessage, .group-contact-form .social-connect-icon a:hover,
+.header-tab-gallery > li.active a, .header-tab-gallery > li a:hover, #dor-header02 #dor_search_top form input:focus, .about-group-steps .icon-item,
+#dor-header03 .user-info .toogle_content, #dor-header02 .user-info .toogle_content, .user-info .toogle_content .btn.btn-default.signout-button:hover,
+.actions-footer-sidebar > a.dor-sidebar-compare, .compare_footer_link .button.lnk_view.btn.btn-default, .subscribe .alt.fancy-button{
+    border-color:#77d0e4 !important;
+}
+section.login-form footer button:hover, #password .card-block form footer button:hover, #customer-form footer button:hover,
+.blockcart.cart-preview .cart-products-count, .checkout.cart-detailed-actions.card-block .btn.btn-primary:hover, #cart .cart-grid .cart-grid-body > a.label:hover,
+#dor-blog-home-style4 .owl-controls .owl-dots .owl-dot:hover span, #dor-blog-home-style4 .owl-controls .owl-dots .owl-dot.active span,
+footer.form-footer .continue:hover, .delivery-options-list .continue:hover, .js-address-form .continue, #payment-confirmation .btn.btn-primary.center-block:hover,
+.page-my-account footer.page-footer .text-xs-center > a:hover, .dorFilterInner .ui-slider-horizontal .ui-slider-handle,
+nav.pagination ul.page-list li.current > a, nav.pagination ul.page-list li.current > a:hover, nav.pagination ul.page-list li a:hover,
+#product .product-actions .add-to-cart:hover, .quickview .product-actions .add-to-cart:hover, #ordertrack:hover,
+.bootstrap-touchspin .input-group-btn-vertical > .btn:hover, .continue:hover, #tags_blog_block_left .block_content > a:hover{
+    background-color: #77d0e4 !important;
+    border-color: #77d0e4 !important;
+}
+body#checkout section.checkout-step{
+    border-top-color: #77d0e4 !important;
+}
+.block-categories .category-sub-menu li[data-depth="0"] > a:hover,
+.block-categories .category-sub-menu li a:hover, .block-categories .category-sub-menu .category-sub-link:hover,
+#search_filters .facet .facet-label:hover{
+    border-bottom-color: #77d0e4 !important;
+}
+#product_comparison .cmp_remove::before,
+.remove-from-cart::before {
+    border-color: transparent transparent #77d0e4;
+}
+.popup-cls.close::before {
+    border-color: rgba(0, 0, 0, 0) #77d0e4;
+}

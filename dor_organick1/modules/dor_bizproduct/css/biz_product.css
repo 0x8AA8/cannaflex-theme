@@ -1,0 +1,246 @@
+
+/*******************/
+.biz-contents .left-block {
+    width: 122px;float: left;overflow: inherit !important;
+}
+.biz-contents .right-block {
+    float: left;
+    padding-left: 20px;
+    text-align: left;
+    width: calc(100% - 122px);
+}
+.biz-group{padding-left: 15px;padding-right: 15px;}
+.biz-contents article {
+    clear: both;
+    display: table;
+    padding-left: 0px;
+    padding-right: 0px;
+    width: 100%;
+}
+.biz-header > h2 {
+    display: none;
+}
+.biz-contents .productTabContent{
+    min-height: 530px;
+}
+.biz-contents .productTabContent.owl-carousel{
+    min-height: inherit;
+}
+.biz-contents .product-cate {
+    display: none;
+}
+.biz-contents .product-price-and-shipping{text-align: left !important;}
+.biz-contents .control-line-cart{text-align: left;}
+.biz-contents .cart-button.button.ajax_add_to_cart_button.add-to-cart span {
+    background-color: #2a2a2a;
+    border: 1px solid #2a2a2a;
+    border-radius: 35px;
+    color: #fff;
+    display: block;
+    font-size: 12px;
+    padding: 7px 18px;
+    text-transform: uppercase;
+}
+.biz-contents .control-line-cart .icon-line-wishlist-fel {
+    display: inline-block;
+    opacity: 1;
+    position: relative;
+    right: 0;
+    transition: all 0.3s ease 0s;
+    visibility: visible;
+}
+.biz-contents .control-line-cart .dor-compare-button-fel {
+    display: inline-block;
+    opacity: 1;
+    position: relative;
+    left: 0;
+    transition: all 0.3s ease 0s;
+    visibility: visible;
+}
+.biz-contents .control-line-cart .icon-line-wishlist-fel a.addToDorWishlist, .biz-contents .dor-compare-button-fel .add_to_compare {
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    display: block;
+    height: 35px;
+    line-height: 32px;
+    text-align: center;
+    width: 35px;
+}
+.biz-contents .hook-reviews {
+    background: #fff none repeat scroll 0 0;
+    left: auto;
+    opacity: 1;
+    position: relative;
+    right: auto;
+    text-align: left;
+    top: 0 !important;
+    transition: all 0.3s ease 0s;
+    z-index: 2;
+}
+.biz-contents .hook-reviews .comments_note{text-align: left;}
+.biz-contents .review-price-product{height: auto;}
+.biz-contents .hook-reviews .star_content{padding-top: 0px;}
+.biz-contents .product-image-container{overflow: hidden !important;}
+.biz-contents .product-image-container .thumbnail.product-thumbnail{
+    position: relative;border:none;padding:0px;
+}
+.biz-contents .product-image-container .thumbnail.product-thumbnail::before{
+    position: absolute;
+    content: "";
+    border:1px #f1f1f1 solid;
+    top: -8px;
+    left: -8px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+.biz-contents .product-image-container .thumbnail.product-thumbnail img{position: relative;z-index: 9;border:1px #f1f1f1 solid;}
+.biz-contents .show-btn-products{display: none !important;}
+.biz-contents .dor-show-value-product > div{float: none !important;}
+.biz-contents .dor-show-value-product > div.highlighted-informations{
+    float: none !important;
+    background: none;
+    bottom: auto;
+    box-shadow: none;
+    height: auto;
+    padding-top: 0px;
+    position: relative;
+    text-align: left;
+}
+body main .biz-contents .product-container:hover .content_price {
+    opacity: 1;visibility: visible;
+}
+.biz-contents .variant-links{text-align: left;}
+/*******************/
+.biz-header {
+    margin-bottom: 55px;
+    text-align: center;
+}
+.biz-header .biz-title span {
+    background: #fff none repeat scroll 0 0;
+    font-size: 33px;
+    font-weight: 400;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    text-transform: uppercase;
+    z-index: 9;
+}
+.biz-header .sug-line-title {
+    color: #999;
+    font-family: "Lato";
+    font-size: 15px;
+    padding-top: 15px;
+    margin:0px 0px 10px;
+}
+.biz-title {
+    position: relative;display: block;
+}
+.biz-header .biz-title::before {
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    top: 20px;
+    width: 40%;
+}
+
+.biz-header .biz-title::after {
+    border-bottom: 1px solid #e3e3e3;
+    border-top: 1px solid #e3e3e3;
+    content: "";
+    height: 5px;
+    position: absolute;
+    right: 0;
+    top: 20px;
+    width: 40%;
+}
+.biz-header {
+    margin-bottom: 35px;
+    padding: 0 15px;
+    position: relative;
+    text-align: center;
+}
+.biz-group .biz-tabtitle {
+    display: block;
+    font-size: 20px;
+    margin-bottom: 20px;
+    margin-top: 0;
+    margin-left:0px;
+    margin-right:0px;
+    position: relative;
+    text-transform: uppercase;
+    width: calc(100% - 0px);
+}
+.biz-group .biz-tabtitle::after{
+    content: "";
+    position: absolute;
+    background-color: #ddd;
+    height: 1px;
+    width: 100%;
+    left: 0px;
+    bottom: -15px;
+}
+.biz-group .biz-tabtitle span {
+    background: none;
+    font-size: 23px;
+    font-weight: 400;
+    padding-right: 0px;
+    position: relative;
+    text-transform: none;
+}
+.biz-group .biz-tabtitle span::after{
+    content: "";
+    position: absolute;
+    background-color: #67bd45;
+    height: 1px;
+    width: 100%;
+    left: 0px;
+    bottom: -12px;
+    z-index: 1;
+}
+.biz-item-group {
+    padding: 25px 0px 15px;
+}
+.dor-biz-product .view-more-cat-link{display: none;}
+
+
+.tab-biz-control{display: none !important;}
+.dor-biz-product .owl-controls .owl-nav > div.owl-prev{
+    right: 55px;
+}
+.dor-biz-product .owl-controls .owl-nav > div.owl-next{
+    right: 15px;
+}
+.dor-biz-product .owl-controls .owl-nav > div {
+    width: 35px;
+    height: 25px;
+    line-height: 23px;
+    top: -1px;
+    border-radius: 5px;
+}
+.biz-contents .product-title-item .product-name {
+    font-size: 16px;
+}
+.dor-biz-product .hook-reviews .comments_note .star_content{padding-top: 0px;}
+.biz-contents {
+    clear: both;
+    display: block;
+    overflow: hidden;
+    padding: 25px 0;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.product-biz.list-products{
+    padding-top: 15px;
+}
+
+.biz-contents .product-title-item {
+    text-align: left;
+}
+.biz-contents .right-block {
+    padding-top: 0px !important;
+}
+.biz-header{display: none;}

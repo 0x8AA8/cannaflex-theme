@@ -1,0 +1,11 @@
+.block_newsletter form input[name="submitNewsletter"],
+.dorNavSlider > div.av, .dorNavSlider > div:hover,
+.dor-megamenu ul.navbar-nav li a:hover span.menu-title::after,
+.dor-megamenu ul.navbar-nav > li > a:hover::after{
+	background: #5d957b;
+}
+.block_newsletter p span,
+.footer-container li a:hover,
+.dor-megamenu ul.navbar-nav li a:hover span.menu-title,
+#search_filters .facet .facet-label a:hover, #search_filters_brands .facet .facet-label a:hover, 
+#search_filters_suppliers .facet .facet-label a:hover{color: #5d957b;}

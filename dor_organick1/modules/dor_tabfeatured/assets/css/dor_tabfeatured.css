@@ -1,0 +1,19 @@
+#dorTabFeaturedCategoryContent article {
+    float: left;
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 25%;
+}
+#dorTabFeaturedCategoryContent .product_list{
+    display: block;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.feature-title-module .insight-title-subtitle {
+    font-size: 27px;
+    font-weight: 300;
+}
+.dor-tab-featured-category-wrapper .feature-title-module {
+    padding-bottom: 45px;
+    padding-top: 65px;
+}

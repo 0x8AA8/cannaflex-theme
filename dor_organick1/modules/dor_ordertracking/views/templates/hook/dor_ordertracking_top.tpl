@@ -1,0 +1,1 @@
+<a href="{$link->getModuleLink('dor_ordertracking', 'ordertracking', array(), true)|addslashes}" class="order-tracking-top-link"><i class="material-icons">&#xE558;</i><span>{l s="Track Your Order" d='Modules.Dorordertracking.Shop'}</span></a>

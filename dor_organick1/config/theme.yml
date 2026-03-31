@@ -1,0 +1,183 @@
+name: dor_organick1
+display_name: Organick Store
+version: 1.0.0
+author:
+  name: "Dorado Themes"
+  email: "doradothemes@gmail.com"
+  url: "http://www.doradothemes.com"
+
+meta:
+  compatibility:
+      from: 1.7.0.0
+      to: ~
+
+  available_layouts:
+    layout-full-width:
+      name: Full Width
+      description: No side columns, ideal for distraction-free pages such as product pages.
+    layout-both-columns:
+      name: Three Columns
+      description: One large central column and 2 side columns.
+    layout-left-column:
+      name: Two Columns, small left column
+      description: Two columns with a small left column
+    layout-right-column:
+      name: Two Columns, small right column
+      description: Two columns with a small right column
+
+assets:
+  # If you're using this theme as child and you want to load
+  # the parent theme assets, uncomment this line.
+#  use_parent_assets: true
+
+  # The following lines are showing how to load assets in your page
+  # Uncomment and change value to start loading css or js files
+#  css:
+#    all:
+#      - id: custom-lib-style
+#        path: assets/css/custom-lib.css
+#    product:
+#      - id: product-style
+#        path: assets/css/product.css
+#        media: all
+#        priority: 200
+#  js:
+#    cart:
+#      - id: cat-extra-lib
+#        path: assets/js/cart-lib.js
+
+
+global_settings:
+  configuration:
+    PS_IMAGE_QUALITY: png
+  modules:
+    to_disable: 
+      - ps_linklist
+      - ps_customeraccountlinks
+      - ps_legalcompliance
+      - ps_mainmenu
+      - ps_imageslider
+      - ps_searchbar
+      - ps_featuredproducts
+      - ps_banner
+      - ps_customtext
+    to_enable:
+     - dor_themeoptions
+     - smartblog
+     - dorgallery
+     - dor_imageslider
+     - dor_managerblocks
+     - dor_managerblockfooter
+     - dor_megamenu
+     - dor_searchcategories
+     - dor_testimonials
+     - dor_bizproduct
+     - dor_ajaxtabproductcategory
+     - dor_ordertracking
+     - dorproductreviews
+     - dorblocktags
+     - dor_productsamecategory
+     - dor_ajaxtabsidebar_product
+     - dor_dailydeals
+     - dor_videoproducts
+     - dor_smartuser
+     - dorblockwishlist
+     - dorpages
+     - dorcompare
+     - smartbloghomelatestnews
+     - smartblogsearch
+     - smartblogcategories
+     - smartblogpopularposts
+     - smartblogtag
+  hooks:
+    modules_to_hook:
+      displayNav1:
+        - ps_languageselector
+        - ps_currencyselector
+        - ps_customersignin
+      displayNav2:
+        - ps_shoppingcart
+      displayNav:
+        - ps_languageselector
+        - ps_currencyselector
+      dorFaces:
+        - ps_facetedsearch
+      displayTop:
+        - dor_megamenu
+      displayTopColumn:
+        - ps_languageselector
+        - ps_currencyselector
+      displayHome:
+      displayFooterBefore:
+        - ps_emailsubscription
+        - ps_socialfollow
+      displayFooter:
+        - dor_managerblockfooter
+      displayLeftColumn:
+        - ps_categorytree
+        - ps_facetedsearch
+        - dorcompare
+        - dor_ajaxtabsidebar_product
+        - dor_managerblocks
+      displayRightColumn:
+        - ps_categorytree
+        - ps_facetedsearch
+        - dorcompare
+        - dor_ajaxtabsidebar_product
+        - dor_managerblocks
+      displaySearch:
+      displayDorLeftColumn:
+        - ps_categorytree
+        - dor_ajaxtabsidebar_product
+        - dor_managerblocks
+      displayDorRightColumn:
+        - ps_categorytree
+        - dor_ajaxtabsidebar_product
+        - dor_managerblocks
+      displayProductAdditionalInfo:
+        - ps_sharebuttons
+        - dorblockwishlist
+        - dorcompare
+      displayReassurance:
+        - blockreassurance
+      displayOrderConfirmation2:
+      displayCrossSellingShoppingCart:
+
+  image_types:
+    cart_default:
+      width: 250
+      height: 250
+      scope: [products]
+    small_default:
+      width: 120
+      height: 120
+      scope: [products, categories, manufacturers, suppliers]
+    medium_default:
+      width: 550
+      height: 550
+      scope: [products, manufacturers, suppliers]
+    home_default:
+      width: 550
+      height: 550
+      scope: [products]
+    large_default:
+      width: 800
+      height: 800
+      scope: [products, manufacturers, suppliers]
+    category_default:
+      width: 320
+      height: 320
+      scope: [categories]
+    stores_default:
+      width: 250
+      height: 250
+      scope: [stores]
+
+theme_settings:
+  default_layout: layout-full-width
+  layouts:
+    category: layout-left-column
+    best-sales: layout-left-column
+    new-products: layout-left-column
+    prices-drop: layout-left-column
+    contact: layout-left-column
