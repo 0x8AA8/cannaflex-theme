@@ -12,12 +12,28 @@
 
 <header class="site-header" role="banner">
     <div class="container">
-        <!-- Logo -->
+        <!-- Logo — use custom logo only if its URL contains "cannaflex",
+             otherwise render the Cannaflex text wordmark from the PDF -->
         <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo" aria-label="<?php bloginfo('name'); ?>">
-            <?php if (has_custom_logo()) : ?>
-                <?php the_custom_logo(); ?>
-            <?php else : ?>
-                <span class="site-logo__text"><?php bloginfo('name'); ?></span>
+            <?php
+            $cfx_show_custom_logo = false;
+            if (has_custom_logo()) {
+                $cfx_logo_id  = get_theme_mod('custom_logo');
+                $cfx_logo_url = $cfx_logo_id ? wp_get_attachment_image_url($cfx_logo_id, 'full') : '';
+                // Only use the custom logo if it looks like a Cannaflex asset
+                if ($cfx_logo_url && stripos($cfx_logo_url, 'cannaflex') !== false) {
+                    $cfx_show_custom_logo = true;
+                }
+            }
+            if ($cfx_show_custom_logo) :
+                the_custom_logo();
+            else : ?>
+                <span class="site-logo__text">
+                    <svg class="site-logo__wordmark" viewBox="0 0 180 32" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                        <text x="0" y="26" fill="#1F6656" font-family="Inter,sans-serif" font-weight="700" font-size="24" letter-spacing="0.04em">CANNAFLEX</text>
+                    </svg>
+                    <span class="sr-only"><?php bloginfo('name'); ?></span>
+                </span>
             <?php endif; ?>
         </a>
 

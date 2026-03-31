@@ -57,7 +57,9 @@ body {
   line-height: 1.6;
   color: var(--color-black);
   background: var(--color-white);
-  overflow-x: hidden;
+  /* overflow-x: hidden removed — it breaks position:fixed/sticky.
+     Use overflow-clip-margin on main content instead. */
+  overflow-x: clip;
 }
 
 img,
@@ -270,11 +272,35 @@ select.form-control {
 
 /* ---------- Header / Navbar ---------- */
 .site-header {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   background: var(--color-white);
   border-bottom: 1px solid #eee;
+  height: 70px;
+}
+
+/* Offset for fixed header — push page content below the header */
+main#main-content {
+  padding-top: 70px;
+}
+
+/* Admin bar offset — WP admin bar is 32px on desktop, 46px on mobile */
+.admin-bar .site-header {
+  top: 32px;
+}
+.admin-bar main#main-content {
+  padding-top: 102px; /* 70 + 32 */
+}
+@media (max-width: 782px) {
+  .admin-bar .site-header {
+    top: 46px;
+  }
+  .admin-bar main#main-content {
+    padding-top: 116px; /* 70 + 46 */
+  }
 }
 
 .site-header .container {
@@ -290,9 +316,22 @@ select.form-control {
 }
 
 .site-logo__text {
+  display: flex;
+  align-items: center;
+}
+
+.site-logo__wordmark {
+  height: 28px;
+  width: auto;
+}
+
+/* Fallback when SVG doesn't render */
+.site-logo__text:empty::after {
+  content: 'CANNAFLEX';
   font-weight: var(--fw-bold);
   font-size: 1.5rem;
   color: var(--color-primary);
+  letter-spacing: 0.04em;
 }
 
 .main-nav {
@@ -524,7 +563,7 @@ select.form-control {
 .hero-split {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: 85vh;
+  min-height: min(85vh, 700px);
 }
 
 .hero-split__content {
@@ -1485,6 +1524,10 @@ select.form-control {
     z-index: 999;
   }
 
+  .admin-bar .main-nav {
+    top: 102px; /* 70 header + 32 admin bar */
+  }
+
   .main-nav ul {
     flex-direction: column;
     gap: 1.25rem;
@@ -2243,27 +2286,21 @@ button:focus:not(:focus-visible) {
 /*
  * Placeholders: suppress the visible text label so they appear as
  * clean colored blocks rather than showing "Hero Image" / "Contact Image".
- * Still functional for admins via the data-attribute approach.
+ * Hidden for ALL users — these are layout-structural fallbacks, not UI.
  */
 .placeholder-img {
-  font-size: 0;        /* hide text */
+  font-size: 0;
   color: transparent;
   position: relative;
 }
 
-/* Restore label visibility only inside WP admin bar context (logged-in preview) */
-.admin-bar .placeholder-img {
-  font-size: var(--fs-small);
-  color: var(--color-primary);
-}
-
 /*
- * Hero section: when the image side is a placeholder, constrain height
- * so it doesn't create excessive whitespace.
+ * Hero section: when the image side is a placeholder, fill the grid cell
+ * with a brand gradient and constrain the overall hero height.
  */
 .hero-split__image .placeholder-img {
-  min-height: 400px;
-  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-accent) 100%);
+  min-height: 100%;
+  background: linear-gradient(135deg, var(--color-primary) 0%, #2a7d6a 50%, var(--color-accent) 100%);
 }
 
 /*
@@ -2296,10 +2333,7 @@ button:focus:not(:focus-visible) {
   min-height: 250px;
 }
 
-.admin-bar .placeholder-img--map {
-  color: #999;
-  font-size: var(--fs-caption);
-}
+/* Map placeholder also hidden — use Customizer to set embed URL */
 
 /*
  * About page values image placeholder: taller gradient.
