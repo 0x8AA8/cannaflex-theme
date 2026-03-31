@@ -88,9 +88,9 @@ $page_id = get_the_ID();
 <!-- ===== CTA ===== -->
 <section class="brands-cta section bg-primary text-white text-center">
     <div class="container">
-        <h2 style="color:var(--color-white)"><?php esc_html_e('Interested in carrying our brands?', 'cannaflex'); ?></h2>
-        <p style="max-width:600px;margin:1rem auto 2rem;opacity:0.9"><?php esc_html_e('Partner with Cannaflex and bring the power of Moroccan cannabis to your market.', 'cannaflex'); ?></p>
-        <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn--white"><?php esc_html_e('Contact Us', 'cannaflex'); ?></a>
+        <h2 class="brands-cta__heading"><?php echo esc_html(cannaflex_get('brands_cta_heading', 'Interested in carrying our brands?')); ?></h2>
+        <p class="brands-cta__text"><?php echo esc_html(cannaflex_get('brands_cta_text', 'Partner with Cannaflex and bring the power of Moroccan cannabis to your market.')); ?></p>
+        <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn--white"><?php echo esc_html(cannaflex_get('brands_cta_btn', 'Contact Us')); ?></a>
     </div>
 </section>
 

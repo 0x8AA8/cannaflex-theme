@@ -9,7 +9,7 @@ How to update site content from WordPress admin without touching code.
 | What | Where |
 |------|-------|
 | Site logo | **Appearance → Customize → Site Identity → Logo** |
-| Note | Filename must contain "cannaflex" or the text wordmark is shown |
+| Note | Any custom logo set in WP admin will be rendered. If no logo is set, a Cannaflex SVG wordmark is shown. |
 
 ## Navigation Menu
 
@@ -120,9 +120,45 @@ How to update site content from WordPress admin without touching code.
 | Careers URL | Same | `footer_careers_url` |
 | B2B Access URL | Same | `footer_b2b_url` |
 
+## 404 Page
+
+| Section | Setting Location | Field Name |
+|---------|-----------------|------------|
+| Heading | Appearance → Customize → **404 Page** | `404_heading` |
+| Message | Same | `404_message` |
+| Button text | Same | `404_btn_text` |
+| Button URL | Same | `404_btn_url` |
+
+## Brands Page CTA
+
+| Section | Setting Location | Field Name |
+|---------|-----------------|------------|
+| CTA heading | Appearance → Customize → **Brands Page** | `brands_cta_heading` |
+| CTA text | Same | `brands_cta_text` |
+| CTA button text | Same | `brands_cta_btn` |
+
+## Activity Page Images
+
+| Section | Setting Location | Field Name |
+|---------|-----------------|------------|
+| Block 1 image (Culture) | Pages → Activity → **Activity — Block 1 Image URL** | `_cfx_activity_img_0` |
+| Block 2 image (R&D) | Same | `_cfx_activity_img_1` |
+| Block 3 image (Extraction) | Same | `_cfx_activity_img_2` |
+| Block 4 image (Transformation) | Same | `_cfx_activity_img_3` |
+| Block 5 image (Sales) | Same | `_cfx_activity_img_4` |
+
 ## Reading Settings
 
 | What | Where |
 |------|-------|
 | Set static front page | **Settings → Reading → "A static page"** → Front page: Home |
 | Flush permalinks | **Settings → Permalinks → Save Changes** (click once after theme activation) |
+
+## Admin Notices
+
+The theme shows admin notices when:
+- Required pages are missing (About, Activity, Products, Brands, News, Contact)
+- No primary menu is assigned
+- Front page is not set to a static page
+
+Each notice includes a direct link to fix the issue.

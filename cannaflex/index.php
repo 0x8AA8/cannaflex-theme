@@ -18,14 +18,14 @@ get_header(); ?>
         <?php endif; ?>
 
         <?php if (have_posts()) : ?>
-            <div class="recent-posts__list" style="margin-top:2rem">
+            <div class="recent-posts__list index-posts-list">
                 <?php while (have_posts()) : the_post(); ?>
                     <article class="post-card">
                         <div class="post-card__thumb">
                             <?php if (has_post_thumbnail()) : ?>
                                 <?php the_post_thumbnail('thumb-sm', ['loading' => 'lazy']); ?>
                             <?php else : ?>
-                                <div class="placeholder-img" style="width:100px;height:80px"></div>
+                                <div class="placeholder-img placeholder-img--thumb"></div>
                             <?php endif; ?>
                         </div>
                         <div>
@@ -37,7 +37,7 @@ get_header(); ?>
                 <?php endwhile; ?>
             </div>
 
-            <div style="margin-top:2rem">
+            <div class="pagination-wrap">
                 <?php the_posts_pagination([
                     'mid_size'  => 2,
                     'prev_text' => '&larr;',

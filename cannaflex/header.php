@@ -12,20 +12,9 @@
 
 <header class="site-header" role="banner">
     <div class="container">
-        <!-- Logo — use custom logo only if its URL contains "cannaflex",
-             otherwise render the Cannaflex text wordmark from the PDF -->
+        <!-- Logo -->
         <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo" aria-label="<?php bloginfo('name'); ?>">
-            <?php
-            $cfx_show_custom_logo = false;
-            if (has_custom_logo()) {
-                $cfx_logo_id  = get_theme_mod('custom_logo');
-                $cfx_logo_url = $cfx_logo_id ? wp_get_attachment_image_url($cfx_logo_id, 'full') : '';
-                // Only use the custom logo if it looks like a Cannaflex asset
-                if ($cfx_logo_url && stripos($cfx_logo_url, 'cannaflex') !== false) {
-                    $cfx_show_custom_logo = true;
-                }
-            }
-            if ($cfx_show_custom_logo) :
+            <?php if (has_custom_logo()) :
                 the_custom_logo();
             else : ?>
                 <span class="site-logo__text">
@@ -37,34 +26,11 @@
             <?php endif; ?>
         </a>
 
-        <!-- Main navigation — always render canonical Cannaflex links (PDF nav bar) -->
+        <!-- Main navigation -->
         <nav class="main-nav" id="main-nav" aria-label="<?php esc_attr_e('Main navigation', 'cannaflex'); ?>">
             <?php
-            $cfx_nav = [
-                'Home'     => home_url('/'),
-                'About'    => home_url('/about/'),
-                'Activity' => home_url('/activity/'),
-                'Products' => home_url('/products/'),
-                'Brands'   => home_url('/brands/'),
-                'News'     => home_url('/news/'),
-                'Contact'  => home_url('/contact/'),
-            ];
-
-            // Use WP menu only if it contains the expected Cannaflex items
-            $cfx_use_wp_menu = false;
             if (has_nav_menu('primary')) {
-                $cfx_menu_items = wp_get_nav_menu_items(get_nav_menu_locations()['primary'] ?? 0);
-                if ($cfx_menu_items) {
-                    $cfx_menu_titles = array_map(function ($item) {
-                        return strtolower(trim($item->title));
-                    }, $cfx_menu_items);
-                    // Verify at least Home, About, Activity, Contact are present
-                    $cfx_required = ['home', 'about', 'activity', 'contact'];
-                    $cfx_use_wp_menu = ! array_diff($cfx_required, $cfx_menu_titles);
-                }
-            }
-
-            if ($cfx_use_wp_menu) {
+                // Respect the assigned WP primary menu
                 wp_nav_menu([
                     'theme_location' => 'primary',
                     'container'      => false,
@@ -73,6 +39,16 @@
                     'fallback_cb'    => false,
                 ]);
             } else {
+                // Canonical fallback when no menu is assigned
+                $cfx_nav = [
+                    'Home'     => home_url('/'),
+                    'About'    => home_url('/about/'),
+                    'Activity' => home_url('/activity/'),
+                    'Products' => home_url('/products/'),
+                    'Brands'   => home_url('/brands/'),
+                    'News'     => home_url('/news/'),
+                    'Contact'  => home_url('/contact/'),
+                ];
                 echo '<ul role="menubar">';
                 foreach ($cfx_nav as $label => $url) {
                     $request = wp_parse_url(sanitize_text_field(wp_unslash($_SERVER['REQUEST_URI'] ?? '')), PHP_URL_PATH) ?: '';

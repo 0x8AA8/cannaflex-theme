@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
 ?>
 <section class="recent-posts section" aria-labelledby="posts-heading">
     <div class="container">
-        <h2 id="posts-heading"><?php esc_html_e('Recent Posts', 'cannaflex'); ?></h2>
+        <h2 id="posts-heading"><?php echo esc_html(cannaflex_get('home_posts_heading', 'Recent Posts')); ?></h2>
         <div class="recent-posts__grid">
             <div class="recent-posts__list">
                 <?php

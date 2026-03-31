@@ -236,6 +236,50 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     $wp_customize->add_setting('cannaflex_copyright', ['default' => '2025 by CANNAFLEX. Powered by Cannabis sativa L.', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('cannaflex_copyright', ['label' => 'Copyright text', 'section' => 'cannaflex_footer']);
 
+    /* ================================================================
+       404 PAGE
+       ================================================================ */
+    $wp_customize->add_section('cannaflex_404', [
+        'title'    => __('404 Page', 'cannaflex'),
+        'priority' => 43,
+    ]);
+
+    $wp_customize->add_setting('cannaflex_404_heading', ['default' => 'Page Not Found', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('cannaflex_404_heading', ['label' => 'Heading', 'section' => 'cannaflex_404']);
+
+    $wp_customize->add_setting('cannaflex_404_message', ['default' => 'The page you are looking for might have been removed or is temporarily unavailable.', 'sanitize_callback' => 'sanitize_textarea_field']);
+    $wp_customize->add_control('cannaflex_404_message', ['label' => 'Message', 'section' => 'cannaflex_404', 'type' => 'textarea']);
+
+    $wp_customize->add_setting('cannaflex_404_btn_text', ['default' => 'Back to Home', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('cannaflex_404_btn_text', ['label' => 'Button Text', 'section' => 'cannaflex_404']);
+
+    $wp_customize->add_setting('cannaflex_404_btn_url', ['default' => '/', 'sanitize_callback' => 'esc_url_raw']);
+    $wp_customize->add_control('cannaflex_404_btn_url', ['label' => 'Button URL', 'section' => 'cannaflex_404', 'type' => 'url']);
+
+    /* ================================================================
+       BRANDS PAGE — CTA
+       ================================================================ */
+    $wp_customize->add_setting('cannaflex_brands_cta_heading', ['default' => 'Interested in carrying our brands?', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('cannaflex_brands_cta_heading', ['label' => 'CTA Heading', 'section' => 'cannaflex_brands_page']);
+
+    $wp_customize->add_setting('cannaflex_brands_cta_text', ['default' => 'Partner with Cannaflex and bring the power of Moroccan cannabis to your market.', 'sanitize_callback' => 'sanitize_textarea_field']);
+    $wp_customize->add_control('cannaflex_brands_cta_text', ['label' => 'CTA Text', 'section' => 'cannaflex_brands_page', 'type' => 'textarea']);
+
+    $wp_customize->add_setting('cannaflex_brands_cta_btn', ['default' => 'Contact Us', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('cannaflex_brands_cta_btn', ['label' => 'CTA Button Text', 'section' => 'cannaflex_brands_page']);
+
+    /* ================================================================
+       HOME — Additional editable headings
+       ================================================================ */
+    $wp_customize->add_setting('cannaflex_home_contact_heading', ['default' => "Let's Connect", 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('cannaflex_home_contact_heading', ['label' => 'Form heading', 'section' => 'cannaflex_home_contact']);
+
+    $wp_customize->add_setting('cannaflex_home_posts_heading', ['default' => 'Recent Posts', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('cannaflex_home_posts_heading', ['label' => 'Recent Posts heading', 'section' => 'cannaflex_home_contact']);
+
+    $wp_customize->add_setting('cannaflex_home_news_heading', ['default' => 'Recent News', 'sanitize_callback' => 'sanitize_text_field']);
+    $wp_customize->add_control('cannaflex_home_news_heading', ['label' => 'Recent News heading', 'section' => 'cannaflex_home_contact']);
+
     // Footer — Practical Information links
     $footer_links = [
         'footer_legal_url'    => ['label' => 'Legal Information URL',  'default' => '#'],

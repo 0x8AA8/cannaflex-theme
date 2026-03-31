@@ -18,7 +18,7 @@ defined('ABSPATH') || exit;
         </div>
     </div>
     <div class="home-contact__form">
-        <h2 id="home-contact-heading"><?php esc_html_e("Let's Connect", 'cannaflex'); ?></h2>
+        <h2 id="home-contact-heading"><?php echo esc_html(cannaflex_get('home_contact_heading', "Let's Connect")); ?></h2>
         <?php get_template_part('template-parts/contact', 'form'); ?>
     </div>
 </section>

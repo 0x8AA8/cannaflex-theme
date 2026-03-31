@@ -19,7 +19,13 @@
                 <h4><?php esc_html_e('Contact', 'cannaflex'); ?></h4>
                 <a href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Carry our products', 'cannaflex'); ?></a>
                 <a href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Request our catalog', 'cannaflex'); ?></a>
-                <a href="<?php echo esc_url(cannaflex_get('footer_b2b_url', '#')); ?>"><?php esc_html_e('B2B Access', 'cannaflex'); ?></a>
+                <?php
+                $b2b_url = cannaflex_get('footer_b2b_url');
+                if ($b2b_url && $b2b_url !== '#') : ?>
+                    <a href="<?php echo esc_url($b2b_url); ?>"><?php esc_html_e('B2B Access', 'cannaflex'); ?></a>
+                <?php else : ?>
+                    <span class="footer-col__text"><?php esc_html_e('B2B Access', 'cannaflex'); ?></span>
+                <?php endif; ?>
 
                 <div class="footer-social">
                     <?php
@@ -43,11 +49,22 @@
             <!-- Column 3: Practical information -->
             <div class="footer-col">
                 <h4><?php esc_html_e('Practical Information', 'cannaflex'); ?></h4>
-                <a href="<?php echo esc_url(cannaflex_get('footer_legal_url', '#')); ?>"><?php esc_html_e('Legal information', 'cannaflex'); ?></a>
-                <a href="<?php echo esc_url(get_privacy_policy_url() ?: '#'); ?>"><?php esc_html_e('Privacy Policy', 'cannaflex'); ?></a>
-                <a href="<?php echo esc_url(cannaflex_get('footer_terms_url', '#')); ?>"><?php esc_html_e('Terms of service', 'cannaflex'); ?></a>
-                <a href="<?php echo esc_url(cannaflex_get('footer_faq_url', '#')); ?>"><?php esc_html_e('FAQ', 'cannaflex'); ?></a>
-                <a href="<?php echo esc_url(cannaflex_get('footer_careers_url', '#')); ?>"><?php esc_html_e('Careers', 'cannaflex'); ?></a>
+                <?php
+                $practical_links = [
+                    ['url' => cannaflex_get('footer_legal_url'),  'label' => __('Legal information', 'cannaflex')],
+                    ['url' => get_privacy_policy_url(),           'label' => __('Privacy Policy', 'cannaflex')],
+                    ['url' => cannaflex_get('footer_terms_url'),  'label' => __('Terms of service', 'cannaflex')],
+                    ['url' => cannaflex_get('footer_faq_url'),    'label' => __('FAQ', 'cannaflex')],
+                    ['url' => cannaflex_get('footer_careers_url'), 'label' => __('Careers', 'cannaflex')],
+                ];
+                foreach ($practical_links as $link) :
+                    $url = $link['url'];
+                    if ($url && $url !== '#') : ?>
+                        <a href="<?php echo esc_url($url); ?>"><?php echo esc_html($link['label']); ?></a>
+                    <?php else : ?>
+                        <span class="footer-col__text"><?php echo esc_html($link['label']); ?></span>
+                    <?php endif;
+                endforeach; ?>
             </div>
 
             <!-- Column 4: Made in Morocco badge -->

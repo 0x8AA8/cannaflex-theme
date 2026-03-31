@@ -170,3 +170,49 @@ add_action('init', function () {
 add_action('after_switch_theme', function () {
     update_option('cannaflex_flush_rewrites', 1);
 });
+
+/**
+ * Admin notice when required pages or primary menu are missing/unassigned.
+ */
+add_action('admin_notices', function () {
+    if (! current_user_can('manage_options')) {
+        return;
+    }
+
+    $missing_pages = [];
+    foreach (cannaflex_required_pages() as $slug => [$title, $template]) {
+        $page = get_page_by_path($slug);
+        if (! $page || $page->post_status !== 'publish') {
+            $missing_pages[] = $title;
+        }
+    }
+
+    if ($missing_pages) {
+        printf(
+            '<div class="notice notice-warning"><p><strong>Cannaflex:</strong> %s %s. <a href="%s">%s</a></p></div>',
+            esc_html__('Missing required pages:', 'cannaflex'),
+            esc_html(implode(', ', $missing_pages)),
+            esc_url(admin_url('themes.php')),
+            esc_html__('Re-activate the theme to auto-create them.', 'cannaflex')
+        );
+    }
+
+    if (! has_nav_menu('primary')) {
+        printf(
+            '<div class="notice notice-info"><p><strong>Cannaflex:</strong> %s <a href="%s">%s</a></p></div>',
+            esc_html__('No primary menu assigned. The theme is using fallback navigation.', 'cannaflex'),
+            esc_url(admin_url('nav-menus.php')),
+            esc_html__('Assign a menu here.', 'cannaflex')
+        );
+    }
+
+    $front = get_option('page_on_front');
+    if (get_option('show_on_front') !== 'page' || ! $front) {
+        printf(
+            '<div class="notice notice-warning"><p><strong>Cannaflex:</strong> %s <a href="%s">%s</a></p></div>',
+            esc_html__('Front page is not set to a static page.', 'cannaflex'),
+            esc_url(admin_url('options-reading.php')),
+            esc_html__('Fix in Reading Settings.', 'cannaflex')
+        );
+    }
+});

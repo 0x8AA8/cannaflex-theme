@@ -7,12 +7,12 @@
 
 get_header(); ?>
 
-<section class="section" style="text-align:center;min-height:60vh;display:flex;align-items:center;justify-content:center">
+<section class="section error-404">
     <div class="container">
-        <h1 style="font-size:6rem;color:var(--color-accent)">404</h1>
-        <h2><?php esc_html_e('Page Not Found', 'cannaflex'); ?></h2>
-        <p style="margin:1.5rem 0"><?php esc_html_e('The page you are looking for might have been removed or is temporarily unavailable.', 'cannaflex'); ?></p>
-        <a href="<?php echo esc_url(home_url('/')); ?>" class="btn btn--primary"><?php esc_html_e('Back to Home', 'cannaflex'); ?></a>
+        <h1 class="error-404__code">404</h1>
+        <h2><?php echo esc_html(cannaflex_get('404_heading', 'Page Not Found')); ?></h2>
+        <p class="error-404__message"><?php echo esc_html(cannaflex_get('404_message', 'The page you are looking for might have been removed or is temporarily unavailable.')); ?></p>
+        <a href="<?php echo esc_url(cannaflex_get('404_btn_url', home_url('/'))); ?>" class="btn btn--primary"><?php echo esc_html(cannaflex_get('404_btn_text', 'Back to Home')); ?></a>
     </div>
 </section>
 

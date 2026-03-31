@@ -97,7 +97,7 @@ if ($categories && ! is_wp_error($categories)) : ?>
                         <div class="product-grid-card__content">
                             <h3><?php echo esc_html($name); ?></h3>
                             <p><?php echo esc_html($sub); ?></p>
-                            <a href="#" class="btn btn--secondary btn--sm"><?php esc_html_e('View Details', 'cannaflex'); ?></a>
+                            <span class="btn btn--secondary btn--sm btn--disabled"><?php esc_html_e('View Details', 'cannaflex'); ?></span>
                         </div>
                     </article>
                 <?php endforeach;

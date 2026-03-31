@@ -25,6 +25,9 @@ add_action('add_meta_boxes', function () {
     add_meta_box('cfx_activity_intro_heading', __('Activity — Intro Heading', 'cannaflex'), 'cannaflex_mb_text', 'page', 'normal', 'high', ['field' => '_cfx_activity_intro_heading']);
     add_meta_box('cfx_activity_intro', __('Activity — Intro Text', 'cannaflex'), 'cannaflex_mb_textarea', 'page', 'normal', 'high', ['field' => '_cfx_activity_intro']);
     add_meta_box('cfx_activity_blocks', __('Activity — Blocks (JSON)', 'cannaflex'), 'cannaflex_mb_textarea', 'page', 'normal', 'high', ['field' => '_cfx_activity_blocks']);
+    for ($i = 0; $i < 5; $i++) {
+        add_meta_box("cfx_activity_img_{$i}", sprintf(__('Activity — Block %d Image URL', 'cannaflex'), $i + 1), 'cannaflex_mb_text', 'page', 'normal', 'default', ['field' => "_cfx_activity_img_{$i}"]);
+    }
     add_meta_box('cfx_activity_certs_heading', __('Activity — Certifications Heading', 'cannaflex'), 'cannaflex_mb_text', 'page', 'normal', 'default', ['field' => '_cfx_activity_certs_heading']);
     add_meta_box('cfx_activity_certs_text', __('Activity — Certifications Text', 'cannaflex'), 'cannaflex_mb_textarea', 'page', 'normal', 'default', ['field' => '_cfx_activity_certs_text']);
 
@@ -94,6 +97,11 @@ add_action('save_post', function (int $post_id): void {
         '_cfx_activity_intro_heading',
         '_cfx_activity_intro',
         '_cfx_activity_blocks',
+        '_cfx_activity_img_0',
+        '_cfx_activity_img_1',
+        '_cfx_activity_img_2',
+        '_cfx_activity_img_3',
+        '_cfx_activity_img_4',
         '_cfx_activity_certs_heading',
         '_cfx_activity_certs_text',
         '_cfx_products_intro',

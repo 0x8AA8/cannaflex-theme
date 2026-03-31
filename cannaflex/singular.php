@@ -7,19 +7,19 @@
 
 get_header(); ?>
 
-<article class="section">
-    <div class="container" style="max-width:800px">
+<article class="section single-post">
+    <div class="container singular-container">
         <?php
         if (have_posts()) :
             while (have_posts()) : the_post(); ?>
                 <h1><?php the_title(); ?></h1>
 
                 <?php if (is_singular('post')) : ?>
-                    <p style="color:#777;margin-bottom:2rem"><?php echo esc_html(get_the_date()); ?></p>
+                    <p class="singular-date"><?php echo esc_html(get_the_date()); ?></p>
                 <?php endif; ?>
 
                 <?php if (has_post_thumbnail()) : ?>
-                    <div style="margin-bottom:2rem;border-radius:12px;overflow:hidden">
+                    <div class="single-post__featured">
                         <?php the_post_thumbnail('hero', ['loading' => 'eager']); ?>
                     </div>
                 <?php endif; ?>
@@ -29,14 +29,14 @@ get_header(); ?>
                 </div>
 
                 <?php if (is_singular('post')) : ?>
-                    <div style="margin-top:3rem;border-top:2px solid #eee;padding-top:2rem">
+                    <nav class="single-post__nav">
                         <?php
                         the_post_navigation([
-                            'prev_text' => '&larr; %title',
-                            'next_text' => '%title &rarr;',
+                            'prev_text' => '<span class="nav-subtitle">' . esc_html__('Previous', 'cannaflex') . '</span><span class="nav-title">%title</span>',
+                            'next_text' => '<span class="nav-subtitle">' . esc_html__('Next', 'cannaflex') . '</span><span class="nav-title">%title</span>',
                         ]);
                         ?>
-                    </div>
+                    </nav>
                 <?php endif; ?>
             <?php endwhile;
         endif;

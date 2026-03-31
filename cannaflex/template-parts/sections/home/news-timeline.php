@@ -9,7 +9,7 @@ defined('ABSPATH') || exit;
 ?>
 <section class="news-timeline section" aria-labelledby="news-heading">
     <div class="container">
-        <h2 id="news-heading"><?php esc_html_e('Recent News', 'cannaflex'); ?></h2>
+        <h2 id="news-heading"><?php echo esc_html(cannaflex_get('home_news_heading', 'Recent News')); ?></h2>
         <p class="section-subtitle news-timeline__sub"><?php esc_html_e('Stay connected to discover how we\'re driving change in the global cannabis space and beyond through all of time.', 'cannaflex'); ?></p>
 
         <div class="timeline-h">

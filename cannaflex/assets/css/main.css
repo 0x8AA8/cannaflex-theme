@@ -2402,3 +2402,62 @@ button:focus:not(:focus-visible) {
   margin-inline: auto;
   margin-bottom: 0.75rem;
 }
+
+/* ===== 404 PAGE (replaces inline styles) ===== */
+.error-404 {
+  text-align: center;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-404__code {
+  font-size: 6rem;
+  color: var(--color-accent);
+}
+
+.error-404__message {
+  margin: 1.5rem 0;
+}
+
+/* ===== BRANDS CTA (replaces inline styles) ===== */
+.brands-cta__heading {
+  color: var(--color-white);
+}
+
+.brands-cta__text {
+  max-width: 600px;
+  margin: 1rem auto 2rem;
+  opacity: 0.9;
+}
+
+/* ===== SINGULAR / INDEX (replaces inline styles) ===== */
+.singular-container {
+  max-width: 800px;
+}
+
+.singular-date {
+  color: #777;
+  margin-bottom: 2rem;
+}
+
+.index-posts-list {
+  margin-top: 2rem;
+}
+
+/* ===== FOOTER dead-link text state ===== */
+.footer-col__text {
+  display: block;
+  font-weight: var(--fw-regular);
+  font-size: var(--fs-small);
+  padding: 0.25rem 0;
+  opacity: 0.5;
+}
+
+/* ===== DISABLED BUTTON STATE ===== */
+.btn--disabled {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}

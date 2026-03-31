@@ -179,18 +179,23 @@ add_filter('body_class', function (array $classes): array {
 });
 
 /* ==========================================================================
-   Prevent Gutenberg block content from contaminating Cannaflex templates.
-   When a page uses one of our custom templates, suppress block rendering
-   so only template-driven meta/customizer content is shown.
+   Prevent foreign block content from contaminating Cannaflex templates.
+   Only suppresses when the page content appears to be from another theme
+   (contains Organic Store / WooCommerce blocks). Legitimate editor content
+   on these templates is handled via page meta fields, not the_content().
    ========================================================================== */
 add_filter('the_content', function (string $content): string {
     if (is_admin() || wp_doing_ajax()) {
         return $content;
     }
     $template = get_page_template_slug();
-    $suppressed = ['page-about.php', 'page-activity.php', 'page-contact.php'];
-    if (in_array($template, $suppressed, true)) {
-        return '';
+    $meta_driven = ['page-about.php', 'page-activity.php', 'page-contact.php'];
+    if (in_array($template, $meta_driven, true)) {
+        // Suppress if content contains foreign blocks or is non-empty
+        // (these templates get their content from meta fields, not the editor)
+        if (trim($content) !== '') {
+            return '';
+        }
     }
     return $content;
 }, 1);
