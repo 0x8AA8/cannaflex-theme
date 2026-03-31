@@ -235,4 +235,27 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
 
     $wp_customize->add_setting('cannaflex_copyright', ['default' => '2025 by CANNAFLEX. Powered by Cannabis sativa L.', 'sanitize_callback' => 'sanitize_text_field']);
     $wp_customize->add_control('cannaflex_copyright', ['label' => 'Copyright text', 'section' => 'cannaflex_footer']);
+
+    // Footer — Practical Information links
+    $footer_links = [
+        'footer_legal_url'    => ['label' => 'Legal Information URL',  'default' => '#'],
+        'footer_terms_url'    => ['label' => 'Terms of Service URL',   'default' => '#'],
+        'footer_faq_url'      => ['label' => 'FAQ URL',               'default' => '#'],
+        'footer_careers_url'  => ['label' => 'Careers URL',            'default' => '#'],
+    ];
+
+    foreach ($footer_links as $id => $f) {
+        $wp_customize->add_setting("cannaflex_{$id}", ['default' => $f['default'], 'sanitize_callback' => 'esc_url_raw']);
+        $wp_customize->add_control("cannaflex_{$id}", ['label' => $f['label'], 'section' => 'cannaflex_footer', 'type' => 'url']);
+    }
+
+    // Footer — Contact column links
+    $footer_contact = [
+        'footer_b2b_url' => ['label' => 'B2B Access URL', 'default' => '#'],
+    ];
+
+    foreach ($footer_contact as $id => $f) {
+        $wp_customize->add_setting("cannaflex_{$id}", ['default' => $f['default'], 'sanitize_callback' => 'esc_url_raw']);
+        $wp_customize->add_control("cannaflex_{$id}", ['label' => $f['label'], 'section' => 'cannaflex_footer', 'type' => 'url']);
+    }
 });

@@ -19,7 +19,7 @@
                 <h4><?php esc_html_e('Contact', 'cannaflex'); ?></h4>
                 <a href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Carry our products', 'cannaflex'); ?></a>
                 <a href="<?php echo esc_url(home_url('/contact/')); ?>"><?php esc_html_e('Request our catalog', 'cannaflex'); ?></a>
-                <a href="#"><?php esc_html_e('B2B Access', 'cannaflex'); ?></a>
+                <a href="<?php echo esc_url(cannaflex_get('footer_b2b_url', '#')); ?>"><?php esc_html_e('B2B Access', 'cannaflex'); ?></a>
 
                 <div class="footer-social">
                     <?php
@@ -43,11 +43,11 @@
             <!-- Column 3: Practical information -->
             <div class="footer-col">
                 <h4><?php esc_html_e('Practical Information', 'cannaflex'); ?></h4>
-                <a href="#"><?php esc_html_e('Legal information', 'cannaflex'); ?></a>
-                <a href="<?php echo esc_url(get_privacy_policy_url()); ?>"><?php esc_html_e('Privacy Policy', 'cannaflex'); ?></a>
-                <a href="#"><?php esc_html_e('Terms of service', 'cannaflex'); ?></a>
-                <a href="#"><?php esc_html_e('FAQ', 'cannaflex'); ?></a>
-                <a href="#"><?php esc_html_e('Careers', 'cannaflex'); ?></a>
+                <a href="<?php echo esc_url(cannaflex_get('footer_legal_url', '#')); ?>"><?php esc_html_e('Legal information', 'cannaflex'); ?></a>
+                <a href="<?php echo esc_url(get_privacy_policy_url() ?: '#'); ?>"><?php esc_html_e('Privacy Policy', 'cannaflex'); ?></a>
+                <a href="<?php echo esc_url(cannaflex_get('footer_terms_url', '#')); ?>"><?php esc_html_e('Terms of service', 'cannaflex'); ?></a>
+                <a href="<?php echo esc_url(cannaflex_get('footer_faq_url', '#')); ?>"><?php esc_html_e('FAQ', 'cannaflex'); ?></a>
+                <a href="<?php echo esc_url(cannaflex_get('footer_careers_url', '#')); ?>"><?php esc_html_e('Careers', 'cannaflex'); ?></a>
             </div>
 
             <!-- Column 4: Made in Morocco badge -->
